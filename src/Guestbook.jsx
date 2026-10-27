@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ArrowSquareOut, ChatCircle } from '@phosphor-icons/react';
 import Turnstile from './Turnstile';
+import { browserVisitorId } from '../shared/visitor-id.mjs';
 
 async function getJSON(url, options) {
   const response = await fetch(url, options);
@@ -24,6 +25,7 @@ export default function Guestbook({ lang, t }) {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const idempotency = useRef(null);
+  const visitorId = useRef('');
   const turnstile = service?.captchaProvider === 'turnstile';
   const canSubmit = service?.available && (turnstile ? Boolean(turnstileToken) : Boolean(captcha)) && !busy;
 
@@ -51,7 +53,8 @@ export default function Guestbook({ lang, t }) {
   }
   useEffect(() => {
     let active = true;
-    getJSON('/api/guestbook/status').then(data => {
+    visitorId.current = browserVisitorId();
+    getJSON('/api/guestbook/status', { headers: { 'X-Guestbook-Visitor': visitorId.current } }).then(data => {
       if (!active) return;
       setService(data);
       if (data.readable ?? data.available) loadMessages();
@@ -67,7 +70,7 @@ export default function Guestbook({ lang, t }) {
     idempotency.current ||= crypto.randomUUID();
     try {
       const data = await getJSON('/api/guestbook/messages', {
-        method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': idempotency.current },
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': idempotency.current, 'X-Guestbook-Visitor': visitorId.current },
         body: JSON.stringify({
           nickname, content: message, locale: lang, consent,
           captcha: turnstile ? { token: turnstileToken } : { challengeId: captcha.challengeId, answer },
@@ -90,7 +93,7 @@ export default function Guestbook({ lang, t }) {
       <form onSubmit={submit} className="guestbook-form">
         <div className="service-status" role="status"><span className={'status-dot ' + (service?.available ? 'online' : '')} />{serviceLabel}</div>
         <label htmlFor="nickname">{t.nickname}</label>
-        <input id="nickname" name="nickname" autoComplete="nickname" maxLength="64" placeholder={service?.defaultNickname || '玩家_IP'} value={nickname} onChange={edit(setNickname)} aria-describedby="nickname-hint" />
+        <input id="nickname" name="nickname" autoComplete="nickname" maxLength="64" placeholder={service?.defaultNickname || t.nickname} value={nickname} onChange={edit(setNickname)} aria-describedby="nickname-hint" />
         <p className="field-hint" id="nickname-hint">{t.nicknameHint}</p>
         <label htmlFor="message">{t.message} <span>{t.required}</span></label>
         <textarea id="message" name="message" rows="7" minLength="4" maxLength="2000" required value={message} onChange={edit(setMessage)} aria-describedby="message-hint" />

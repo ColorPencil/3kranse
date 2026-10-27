@@ -18,7 +18,8 @@ export default {
       }
       // This adapter runs exclusively at Cloudflare's edge. Never trust X-Forwarded-For or JSON IPs.
       const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-      return handlers.get(env)(request, { ip });
+      // request.cf is edge-provided metadata; client headers and browser language cannot assert a country.
+      return handlers.get(env)(request, { ip, country: request.cf?.country });
     }
     if (/^\/ko(?:\/|$)/.test(url.pathname)) {
       // Request the clean directory URL so Pages does not redirect index.html before we set 404.

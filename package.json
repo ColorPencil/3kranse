@@ -7,7 +7,7 @@
     "dev": "node scripts/compile-content.mjs && vite",
     "build": "node scripts/compile-content.mjs && vite build && node scripts/prepare-sites-build.mjs && vite build --ssr src/entry-server.jsx --outDir .render && node scripts/prerender.mjs",
     "start": "node server/serve.mjs",
-    "test": "node --test tests/guestbook.test.mjs tests/public-data.test.mjs scripts/tests/locale.test.mjs scripts/tests/guestbook-d1.test.mjs",
+    "test": "node --test tests/guestbook.test.mjs tests/public-data.test.mjs scripts/tests/locale.test.mjs scripts/tests/guestbook-d1.test.mjs scripts/tests/guestbook-privacy.test.mjs",
     "preview": "vite preview",
     "test:sites": "node --test tests/sites-worker.test.mjs",
     "check": "node scripts/check-build.mjs",

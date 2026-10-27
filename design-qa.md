@@ -109,3 +109,12 @@ final result: passed
 - 桌面1440px、390px手机与320px英文窄屏检查通过，手机内容宽375／305，无横向溢出。验证码不足300px时使用compact；失败提示和重新验证入口可用，投稿按钮禁用。真实加载了Cloudflare官方“总失败”测试公钥，600010为预期测试结果；未点击解决验证码或提交留言。修正官方组件语言参数为小写zh-cn，去除自动重复重试。
 - 线上只读D1检查因当前环境连接不可用未完成；没有线上写入或发布。生产域名／真实私钥／D1权限仍需作者在控制台配置后完成一次实际投稿。没有持久化作者粘贴的私密值。
 - 证据：docs/qa/d1-turnstile-failure-mobile.jpg、d1-turnstile-en-320.jpg、d1-guestbook-preparing-desktop.jpg、d1-browser-qa.json、d1-workers-http-qa.json、d1-static-qa.json、d1-live-readonly.json。当前配置与操作说明在docs/D1留言与Turnstile配置.md。
+
+## 2026-10-27追加：浏览器匿名ID昵称
+
+- 按作者最新要求，替换尚未发布的IP末两段方案。浏览器首次打开留言页生成随机UUID v4，保存在3kranse.guestbook.visitorId；默认昵称为国家／地区+玩家+前16位十六进制ID，完全不包含IP或IP摘要。清除网站数据、更换浏览器和无痕模式可能变化；禁用存储时当前页面保留临时ID。不采集设备指纹，不用作登录认证。
+- 国家只取Cloudflare request.cf.country；缺少地区时用玩家。默认昵称、旧留言与状态接口在服务端处理。历史IP／遮蔽IP默认昵称改为玩家_历史{公开留言ID}，自定义昵称和原始数据库记录保留。完整IP仍供后台记录、验证码校验和限流；轮换匿名ID不能绕过数据库内每IP限额。
+- 中日英提示和隐私说明同步。桌面1440×1000、手机390×844、英文320×844实际检查，无横向溢出；内容宽分别1425、375、305。浏览器验证刷新及中日英切换复用同一ID，旧默认昵称不再含IP；error／warn为空。
+- 47项回归通过（39项核心、4项Pages、4项Sites），含13项实际SQLite集成测试和7项匿名ID／隐私测试。覆盖存储禁用、损坏、重新生成、伪造ID回退、历史IPv4／IPv6默认昵称、可信国家、原始IP私存、跨实例限流及无ID旧客户端重放。312个HTML和7580处内部资源／链接检查通过。
+- Pages兼容构建、最终Workers构建与Wrangler dry-run通过；Worker包18.14KiB。真实本地workerd确认Intl地区名称可用、同浏览器ID换IP仍同名、无ID随机回退、缺少机密禁止投稿、三语200、韩文及服务端源码404。
+- 本地截图使用明确标识的只读测试数据，未写入源码或发布目录。没有投递线上留言、修改D1数据、推送或执行云端发布。证据：docs/qa/browser-id-desktop.jpg、browser-id-mobile.jpg、browser-id-list-mobile.jpg、browser-id-en-320.jpg、browser-id-browser-qa.json、browser-id-worker-qa.json。

@@ -12,7 +12,7 @@ const valid = { nickname: '', content: '期待这个游戏！', locale: 'zh-cn',
 const ip = '203.0.113.7';
 function request(body = valid, key = crypto.randomUUID(), origin = 'https://site.test') {
   return new Request('https://site.test/api/guestbook/messages', {
-    method: 'POST', headers: { Origin: origin, 'Content-Type': 'application/json', 'Idempotency-Key': key, 'User-Agent': 'Trusted header UA' },
+    method: 'POST', headers: { Origin: origin, 'Content-Type': 'application/json', 'Idempotency-Key': key, 'User-Agent': 'Trusted header UA', 'X-Guestbook-Visitor': 'a4f8c91e-6b2d-4053-8c10-123456789abc' },
     body: JSON.stringify(body),
   });
 }
@@ -72,10 +72,11 @@ test('D1 stores trusted IP, plain message and whitelisted browser data; public l
   assert.deepEqual(await result.json(), { id: '1', status: 'published' });
   const saved = f.db.prepare('SELECT * FROM messages').get();
   assert.equal(saved.ip, ip);
-  assert.equal(saved.nickname, '玩家_' + ip);
+  assert.equal(saved.nickname, '玩家_a4f8c91e6b2d4053');
   assert.equal(saved.message, body.content);
   const metadata = JSON.parse(f.db.prepare('SELECT browser_json FROM message_metadata').get().browser_json);
   assert.equal(metadata.userAgent, 'Trusted header UA');
+  assert.equal(metadata.visitorId, 'a4f8c91e-6b2d-4053-8c10-123456789abc');
   assert.equal(metadata.secret, undefined);
   assert.equal(metadata.ip, undefined);
   const data = await (await handler(new Request('https://site.test/api/guestbook/messages'))).json();
@@ -183,4 +184,58 @@ test('D1 auth failures and invalid identifiers do not expose credentials or quer
   const invalid = createGuestbookHandler({ ...config, d1: { ...config.d1, accountId: '../evil' } }, f.fetcher);
   assert.equal((await invalid(request(), { ip })).status, 503);
   assert.equal(f.calls.length, 1);
+});
+
+test('historical defaults are redacted by D1 read without changing stored IPs or custom names', async t => {
+  const f = fixture(t);
+  const insert = f.db.prepare('INSERT INTO messages (nickname, ip, message) VALUES (?, ?, ?)');
+  insert.run('玩家_45.12.88.149', '45.12.88.149', '旧留言');
+  insert.run('木头', '45.12.88.149', '自定义昵称');
+  insert.run('', '45.12.88.149', '空白旧昵称');
+  const data = await (await f.handler()(new Request('https://site.test/api/guestbook/messages'), { ip, country: 'JP' })).json();
+  assert.deepEqual(data.items.map(item => item.nickname), ['玩家_历史3', '木头', '玩家_历史1']);
+  assert.doesNotMatch(JSON.stringify(data), /45\.12\.88\.149/);
+  assert.equal(f.db.prepare('SELECT nickname FROM messages WHERE id = 1').get().nickname, '玩家_45.12.88.149');
+  assert.equal(f.db.prepare('SELECT ip FROM messages WHERE id = 1').get().ip, '45.12.88.149');
+});
+
+test('browser ID defaults are stored without IP, including explicitly submitted old defaults', async t => {
+  const f = fixture(t);
+  for (const nickname of ['', '玩家_' + ip]) {
+    const result = await f.handler()(request({ ...valid, nickname, country: 'JP' }), { ip, country: 'CN' });
+    assert.equal(result.status, 201);
+  }
+  const rows = f.db.prepare('SELECT nickname, ip FROM messages').all();
+  assert.equal(rows.length, 2);
+  for (const row of rows) {
+    assert.equal(row.nickname, '中国玩家_a4f8c91e6b2d4053');
+    assert.equal(row.ip, ip);
+  }
+});
+
+test('changing anonymous IDs cannot bypass the shared per-IP posting limit', async t => {
+  const f = fixture(t);
+  for (let n = 0; n < 6; n += 1) {
+    const incoming = request({ ...valid, content: '匿名ID切换测试 ' + n });
+    incoming.headers.set('X-Guestbook-Visitor', crypto.randomUUID());
+    const result = await f.handler()(incoming, { ip });
+    assert.equal(result.status, n < 5 ? 201 : 429);
+  }
+  assert.equal(f.db.prepare('SELECT COUNT(*) AS n FROM messages').get().n, 5);
+});
+
+test('older clients without browser IDs can replay a lost successful response', async t => {
+  const f = fixture(t);
+  const key = crypto.randomUUID();
+  const incoming = () => {
+    const value = request(valid, key);
+    value.headers.delete('X-Guestbook-Visitor');
+    return value;
+  };
+  const first = await f.handler()(incoming(), { ip });
+  const second = await f.handler()(incoming(), { ip });
+  assert.equal(first.status, 201);
+  assert.equal(second.status, 201);
+  assert.deepEqual(await first.json(), await second.json());
+  assert.equal(f.db.prepare('SELECT COUNT(*) AS n FROM messages').get().n, 1);
 });

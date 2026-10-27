@@ -10,7 +10,7 @@
 - 攻略源文件在`content/`，目前为三语校对稿；校对完成后更新`editorialReview`。不把旧测试录像数值当作当前规则，也不将内部实现术语写进玩家说明。
 - 武将精选基础`stre`、`inte`、`ste`至少一项90以上；展示基础属性，已按用户2026-10-27补充授权展示这83位精选武将的固有技能说明、效果与完整天赋节点；不导出装备关联和隐藏登场条件。
 - 装备只精选展示。8级及以上物品只保留多语言名称（用户明确“不含8级”，1—7级可展示详情与图标），**导出数据、公开JS、图标文件均不得携带它们的细节**，不能只靠CSS隐藏。使用`scripts/export_game_data.py`维护公开白名单。
-- 留言默认使用D1 REST，由Worker提供同源业务接口，保留旧自建后端兼容模式。token只能存服务端环境变量，不能放进`VITE_*`或浏览器。IP来自socket或明确受信任代理，忽略浏览器提供的IP。昵称留空使用`玩家_{IP}`，前端应说明这会公开IP并允许用户改名。
+- 留言默认使用D1 REST，由Worker提供同源业务接口，保留旧自建后端兼容模式。token只能存服务端环境变量，不能放进`VITE_*`或浏览器。IP来自socket或明确受信任代理，忽略浏览器提供的IP。昵称留空使用国家／地区名+玩家+16位浏览器随机ID，如`中国玩家_a4f8c91e6b2d4053`，不能使用IP或IP摘要作为后缀。随机UUID保存在3kranse.guestbook.visitorId，通过X-Guestbook-Visitor传入；无存储时使用当前页面临时ID，不能采集设备指纹或用于登录认证。国家只取Cloudflare request.cf.country，不信任浏览器语言、JSON或自报地区。旧IP默认昵称在服务端读取时改为玩家_历史{公开留言ID}；没有历史地区信息时不按当前阅读者地区猜测。完整IP仅保留后台记录、验证码验证与限流，自定义昵称保留。
 - 验证码必须在服务端校验。未配置接口时明确准备中，不能假成功或放入伪造玩家留言。接口约定在`docs/玩家留言接口约定.md`。
 - 新增代码的赋值、二元运算符两侧留空格；重要业务规则写原因注释。必要校验集中复用，测试关注公开边界和实际行为，不添加无用测试。
 - UI在`src/`。保留`.openai/hosting.json`、`worker/index.js`、`scripts/prepare-sites-build.mjs`、`tests/sites-worker.test.mjs`的模板兼容职责；Node预览与独立的`cloudflare/pages-worker.mjs`共用留言校验；Pages构建用`pnpm run build:pages`，输出`dist/client`。

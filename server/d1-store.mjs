@@ -1,3 +1,5 @@
+import { publicNickname } from './guestbook-identity.mjs';
+
 const accountPattern = /^[a-f0-9]{32}$/i;
 const databasePattern = /^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i;
 export class GuestbookStoreError extends Error {
@@ -73,7 +75,7 @@ export function createD1Store(config = {}, fetcher = fetch) {
         params: cursor ? [cursor, '13'] : ['13'],
       });
       const items = rows.slice(0, 12).map(row => ({
-        id: String(row.id), nickname: String(row.nickname || '').slice(0, 64), content: String(row.content || '').slice(0, 2000),
+        id: String(row.id), nickname: publicNickname(row.nickname, { legacyId: String(row.id) }), content: String(row.content || '').slice(0, 2000),
         createdAt: /^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d(?:\.\d+)?$/.test(row.createdAt || '') ? row.createdAt.replace(' ', 'T') + 'Z' : String(row.createdAt || '').slice(0, 40),
       }));
       return { items, nextCursor: rows.length > 12 ? items.at(-1).id : null };

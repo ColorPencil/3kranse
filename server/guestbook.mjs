@@ -1,3 +1,5 @@
+import { isVisitorId } from '../shared/visitor-id.mjs';
+import { defaultNickname as makeDefaultNickname, publicNickname } from './guestbook-identity.mjs';
 import { createD1Store, fingerprint, GuestbookStoreError } from './d1-store.mjs';
 
 const json = (value, status = 200) => new Response(JSON.stringify(value), {
@@ -42,7 +44,10 @@ export function createGuestbookHandler(config, fetcher = fetch) {
     const route = url.pathname.replace(/\/$/, '');
     // Only the hosting adapter supplies the trusted IP; client JSON and forwarded headers are ignored.
     const ip = trim(context.ip, 80) || 'unknown';
-    const defaultNickname = '玩家_' + ip;
+    // This client ID is a display preference, not proof of identity or a substitute for IP throttling.
+    const suppliedVisitorId = request.headers.get('x-guestbook-visitor');
+    const visitorId = isVisitorId(suppliedVisitorId) ? suppliedVisitorId.toLowerCase() : crypto.randomUUID();
+    const defaultNickname = makeDefaultNickname(visitorId, context.country);
     if (route === '/api/guestbook/status' && request.method === 'GET') {
       return json({ available: configured, readable, defaultNickname, captchaRequired: true, captchaProvider: provider, turnstileSiteKey: provider === 'turnstile' ? config.turnstileSiteKey || '' : '' });
     }
@@ -56,7 +61,7 @@ export function createGuestbookHandler(config, fetcher = fetch) {
         if (cursor) target.searchParams.set('cursor', cursor);
         const data = await upstream(target);
         const items = (Array.isArray(data.items) ? data.items : []).slice(0, 12).map(item => ({
-          id: trim(item.id, 100), nickname: trim(item.nickname, 64), content: trim(item.content, 2000), createdAt: trim(item.createdAt, 40),
+          id: trim(item.id, 100), nickname: publicNickname(item.nickname, { legacyId: trim(item.id, 100) }), content: trim(item.content, 2000), createdAt: trim(item.createdAt, 40),
         }));
         return json({ items, nextCursor: trim(data.nextCursor, 200) || null });
       }
@@ -92,15 +97,17 @@ export function createGuestbookHandler(config, fetcher = fetch) {
       attempts.set(ip, rate);
       const browser = input.browser && typeof input.browser === 'object' ? input.browser : {};
       const metadata = {
+        visitorId,
         userAgent: trim(request.headers.get('user-agent'), 512),
         languages: Array.isArray(browser.languages) ? browser.languages.slice(0, 5).map(value => trim(value, 30)) : [],
         platform: trim(browser.platform, 80), timeZone: trim(browser.timeZone, 80),
         screen: trim(browser.screen, 40), viewport: trim(browser.viewport, 40),
       };
-      const message = { nickname: nickname || defaultNickname, content, locale: input.locale, ip, browser: metadata };
+      const message = { nickname: publicNickname(nickname, { visitorId, country: context.country }), content, locale: input.locale, ip, browser: metadata };
       if (d1) {
         message.requestKey = await fingerprint(ip + ':' + idempotencyKey.toLowerCase());
-        message.payloadHash = await fingerprint(JSON.stringify([message.nickname, content, input.locale]));
+        // Hash submitted identity, not generated fallback names or changing geolocation, so retries stay stable.
+        message.payloadHash = await fingerprint(JSON.stringify([nickname, content, input.locale, isVisitorId(suppliedVisitorId) ? visitorId : '']));
         // A lost response can be replayed without reusing a consumed Turnstile token or creating another row.
         const previous = await d1.findRequest(message.requestKey);
         if (previous) {
