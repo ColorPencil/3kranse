@@ -1,0 +1,76 @@
+# 官网设计与功能验收
+
+final result: passed
+
+日期：2026-10-27。实现地址：`http://localhost:4173/ja/`。本记录替代首轮把纸纹和水墨装饰简化视作可接受差异的结论；用户指出的缺失按P1修复。
+
+## 视觉依据与修复
+
+选定原稿：`docs/design-20261027-v02/previews/home-selected-v01.png`。本轮没有新增整页设计备选。
+
+- [P1／已修复] 原版正文只有平面纸色。接入真实宣纸纹理，覆盖首页与资料、文章等内页。
+- [P1／已修复] 头图下沿是直线切割。接入ImageGen飞白遮罩，保留官方头图题字，恢复不规则水墨与纸纤维收边。
+- [P1／已修复] 首页两侧山水、朱叶与淡金云纹缺失。补入原生透明的独立装饰图层，并保留资讯左侧山松。
+- [P2／已修复] 手机直接裁切装饰中央透明区会使边缘绘画再次消失。改为分别对齐左右边缘，降低透明度以保持正文清楚。
+
+原稿与实现同图对比：`docs/qa/comparison-refined-final.jpg`。将1003×1568原稿等比归一到浏览器内容宽988，与同高实现区域并排，源图不含的首页后续内容不纳入比较。已实际查看最终组合。
+
+桌面最终截图：`docs/qa/home-ja-refined-desktop-final.jpg`，988×4373；CSS视口1003×1568，滚动条占15px。手机最终截图：`docs/qa/home-ja-refined-mobile-final.jpg`，375×5707；CSS视口390×844。实际桌面／手机预览合图：`docs/qa/site-refinement-preview.jpg`。
+
+字形仍采用系统明朝／宋体回退；原稿手写字形与响应式实时文字存在差异。纸纹、边缘水墨和头图飞白已恢复，不声称逐像素复刻。素材原作和提示词见`docs/视觉素材补充-20261027.md`。
+
+## 本轮图鉴与交互
+
+- 收录83位武将。每位符合基础武力、智力、德望至少一项90以上；技能简介、实际效果和天赋节点使用当前游戏数据及语言表。
+- 装备／道具共84件：73件1—7级详情与图标，11件8级仅名称。用户明确不含8级；8级对象没有ID、等级、详情和图标路径，public中没有对应高阶图标。
+- 总数独立于搜索结果；实际搜索7级传国玉玺可读详情，8级赤兔马只出现名称。手机证据：`docs/qa/equipment-names-only-mobile-final.jpg`。
+- 曹操固有技能的简介及两项25%效果与用户截图一致；天赋3级奇正阵、5级黄巾、7级虎豹骑、9级振军按顺序显示。1级全未解锁，3级仅首节点可习得，9级四节点均可习得；切换只影响预览。
+- 技能／天赋页签支持点击和左右方向键；习得内容可展开。中文、日文、英文已实际打开，切换语言保留人物路径；长英文名称在手机自然换行。
+- 证据：`officer-cao-skill-zh-desktop-final.jpg`、`officer-cao-talents-zh-desktop.jpg`、`officer-cao-talents-zh-mobile-final.jpg`、`officer-cao-talents-en-mobile-final.jpg`，均在`docs/qa/`。
+- 手机首页、武将页及装备页内容宽375，与CSS视口390减去15px滚动条一致，未出现横向溢出。菜单和语言切换可用。最终浏览器日志无错误或警告。
+
+## 构建与公开边界
+
+`pnpm run build:pages`成功，输出静态页面、留言Worker和语言404。公开数据与页面脚本分包，单个产物未超过Vite默认500kB提示线。`pnpm check`验证312个HTML与6464处站内链接／资源引用。
+
+19项测试通过，涵盖精选武将资格与技能文本、8级信息边界、图标清单、三语稿件、留言来源检查、验证码先后顺序、私有字段剔除、代理IP、限流、Pages未配置状态及韩文404、模板兼容。
+
+8项本地HTTP检查通过，见`docs/qa/refinement-http-verification.json`：三语页面200、韩文和未知路径404、`.env`不可读取、留言状态未配置。未提交外部留言。
+
+## Cloudflare部署范围
+
+已实现独立Pages适配与`build:pages`入口，说明见`docs/Cloudflare-Pages部署说明.md`。Worker在本地使用模拟静态绑定与环境变量验证；尚未创建Cloudflare项目或进行真实云端部署。留言业务接口和验证码服务未提供，真实联调仍待作者配置，不计作已连接。
+
+游戏新增367「全谋」缺少语言表词条，网站提供独立三语校对稿；装备日英编辑稿仍待作者校对。原始人物装备、获取条件、事件和其他隐藏信息继续保留。
+
+本轮无未处理的P0／P1／P2。首次浏览器复核因额度窗口暂停，窗口恢复后已继续完成桌面、手机和三语检查；没有绕过审批或改用另一浏览器。
+
+## 2026-10-27追加：Logo、页尾和子页面顶部
+
+- [P1／已修复] Logo滤镜将原始木色和纹理压成白色。切换原始彩色透明PNG并移除滤镜；源文件与官网文件SHA-256一致。导出器同步修正，避免下次导出恢复错误。
+- [P2／已修复] 页尾过于单调。两侧添加首页同套山水枝叶、朱叶和淡金云纹，中心文字与链接保持清楚。
+- [P2／已修复] 子页面顶部与页头衔接空白。新增攻略、图鉴、开发日志、开发者专栏、留言5组主题插画；详情页继承父板块，隐私与404复用对应图层。
+- 桌面1440×900、手机390×844分别查看了5个板块；手机内容宽375，没有横向溢出。实际打开攻略正文确认继承攻略插画，Logo在手机宽260px且滤镜为none。浏览器无error／warn。
+- 桌面各板块证据为`docs/qa/header-{guides|data|devlog|creators|guestbook}-desktop.jpg`，手机版为对应`-mobile.jpg`；总览`docs/qa/section-headers-overview.jpg`。Logo与页尾证据`docs/qa/logo-footer-desktop-final.jpg`，手机完整页面为`docs/qa/home-logo-footer-mobile-full.jpg`。
+- Pages构建成功；312个HTML及6464处内部链接／资源引用检查通过。额外逐页确认所有非首页HTML拥有有效主题类，统计见`docs/qa/section-header-route-coverage.json`。
+
+本轮复用既有页尾素材，并使用内置ImageGen绘制5组子页顶部图。没有生成新的首页备选；没有外网发布。
+
+## 2026-10-27追加：页脚木质窗棂
+
+- [P2／已修复] 页脚分界偏弱。上边界下方追加28px暖棕木质镂空窗棂横纹，保持原有宣纸与水墨枝叶。独立装饰层aria-hidden，不遮挡点击。
+- 实际查看中文首页和攻略页的共用页脚。桌面1440×900时内容宽1425，边饰与文字相距16px；手机390×844时内容宽375，间距20px，未出现横向溢出。浏览器error／warn为空。
+- 页面证据：docs/qa/footer-lattice-desktop.jpg、footer-lattice-mobile.jpg、footer-lattice-guides-desktop.jpg。测量记录：docs/qa/footer-lattice-browser-qa.json。
+- Pages重新构建通过；312个页面及6464处内部链接／资源引用检查通过。源素材为内置ImageGen生成，原作与完整提示词记录在docs/footer-lattice-asset.json。
+
+## 2026-10-27追加：图鉴纹饰与武将档案
+
+- [P2／已修复] 武将／装备栏位单调。复用宣纸、山水旌旗与剑甲插画，低透明度铺在栏位角落，文字和原始头像保持清楚。
+- [P2／已修复] 武将缺少体力、胆识。83位公开武将新增基础max_hp与cou，列表及详情均显示，六项属性用金线分区和细刻度呈现。曹操80／86与当前游戏基础字段相符；未使用场景hp。
+- [P2／已修复] 详情空散。改为纸本人物档案结构，头像／简介／六项能力集中在上方，技能与成长单独成区；技能效果分栏、天赋纵向连线。键盘左右键仍能切换页签，9级预览正确显示曹操四个可习得节点。
+- [P2／已修复] 装备0值冗余。实际搜索短剑仅显示攻击4、重量2；传国玉玺不生成空属性栏，德望+10附加效果仍存在。
+- 桌面1440×1000／1200、手机390×844检查了图鉴与中英详情，并查看日文列表。英文诸葛亮长姓名和长技能正常换行。额外在320×844查看英文列表与天赋；内容宽305，属性文字未超出栏位。常规手机内容宽375，无横向溢出，浏览器error／warn为空。首页共用卡片也显示新增属性。
+- 自动检查：4项公开数据回归通过；249个三语武将详情页均有正确的六项属性；36个静态装备卡片的属性与非零源值逐项一致。Pages构建成功，312个文档与6464处内部资源／链接检查通过。未重跑无关后端测试。
+- 证据在docs/qa/：officer-dossier-zh-desktop-final.jpg、officer-dossier-zh-mobile.jpg、officer-dossier-en-mobile.jpg、officer-talents-en-mobile.jpg、officer-cards-zh-desktop.jpg、officer-cards-ja-mobile.jpg、officer-cards-en-320-mobile.jpg、equipment-cards-zh-desktop.jpg、equipment-zero-stats-zh-mobile.jpg。统计记录为codex-cards-static-qa.json、codex-cards-browser-qa.json。
+
+无未处理的本轮P0／P1／P2。继续保留83位精选规则和8级以上仅名称的公开边界；没有外网发布。

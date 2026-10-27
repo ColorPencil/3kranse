@@ -1,0 +1,945 @@
+[
+  {
+    "title": "出征前の編成",
+    "summary": "主将、兵種、陣形をひとつの部隊として見る。",
+    "order": 3,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "ja",
+    "slug": "armies",
+    "html": "<h2 id=\"section-1\">主将から考える</h2>\n<p>まず主将の属性、固有の特長、現在の体力と装備を読む。誰を選ぶかによって、活かしたい部隊の性格も変わる。図鑑の基礎値だけでなく、ゲーム内の現在値を確認しよう。</p>\n<h2 id=\"section-2\">兵種と分隊を確認する</h2>\n<p>編成画面では兵種と分隊の構成を確認できる。使える兵種や編成の条件を画面で確認し、予定している戦い方と比べよう。見た目の兵数だけで決めず、画面の編成表示も読むことが大切。</p>\n<p><img src=\"/assets/screens/army.webp\" alt=\"開発中の編成画面\"></p>\n<h2 id=\"section-3\">陣形を読む</h2>\n<p>陣形の説明を開き、長所だけでなく配置や使い方も考えよう。何種類も一度に変えるより、同じ主将と部隊でひとつずつ試すと違いが見えやすい。</p>\n<h2 id=\"section-4\">戦う場所を想像する</h2>\n<p>平地、水域、林地、城壁では交戦の見え方が変わる。予定経路の地形を見てから編成を決める習慣をつけたい。古い録画内の字幕や数値は、現在のルールを保証するものではない。</p>\n<h2 id=\"section-5\">出征前の最終確認</h2>\n<p>主将の状態、装備条件、兵種、分隊、陣形、兵糧を順に確認する。準備ができたら <a href=\"/ja/guides/battle/\">地形と戦場</a> へ。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "主将から考える",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "兵種と分隊を確認する",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "陣形を読む",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "戦う場所を想像する",
+        "level": 2
+      },
+      {
+        "id": "section-5",
+        "text": "出征前の最終確認",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "地形と戦場の読み方",
+    "summary": "一歩動かす前に、周囲を見る。",
+    "order": 4,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "ja",
+    "slug": "battle",
+    "html": "<h2 id=\"section-1\">移動範囲を確かめる</h2>\n<p>ターン制の戦場では、部隊の位置と移動可能な範囲が判断の出発点になる。敵だけでなく、味方の位置と次の行動も考えて進もう。</p>\n<p><img src=\"/assets/screens/battlefield.webp\" alt=\"水域と移動範囲を示す開発中の戦場\"></p>\n<h2 id=\"section-2\">地形に合わせて考える</h2>\n<p>水域、森林、山地や城防では、同じ部隊でも状況が変わる。進めるマス、使える行動、相手との位置関係をその都度確認しよう。見た目だけから命中率やダメージ倍率を推測しないこと。</p>\n<h2 id=\"section-3\">天候と計略を確認する</h2>\n<p>計略は対象、距離、消費、天候などの条件を持つ。行動前に現在の説明を読む習慣をつけよう。火攻系でも個別の条件があるため、ひとつの計略の制限をすべてに当てはめない。</p>\n<h2 id=\"section-4\">白兵戦へつながる判断</h2>\n<p>戦場の位置取りは、接近後の白兵戦にもつながる。主将と兵士の状態を別々に見て、交戦を続けるか判断しよう。効果によっては兵士だけが対象となり、主将には適用されない。</p>\n<p>この稿では隠れた計算式や未公開の計略一覧を扱わない。まずは画面に見える条件を読み、無理な前進を減らすところから始めよう。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "移動範囲を確かめる",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "地形に合わせて考える",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "天候と計略を確認する",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "白兵戦へつながる判断",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "城を治め、足元を固める",
+    "summary": "金・兵糧・人材を、ひとつの計画として考える。",
+    "order": 2,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "ja",
+    "slug": "city",
+    "html": "<h2 id=\"section-1\">城の情報を読む</h2>\n<p>城は出征の拠点であり、人材と資源を整える場所。金、兵糧、農業、産業、人口、統治などの項目を確認しよう。ひとつの数字だけを伸ばす前に、今の勢力に何が足りないかを考える。</p>\n<h2 id=\"section-2\">人材の使い道を決める</h2>\n<p>武将の詳細には複数の属性と固有の特長がある。強い武将をすべて前線へ送る前に、城に残す役割も考えたい。担当する行動の説明を読み、実行前後の変化を確認して、得意な仕事を見つけよう。</p>\n<h2 id=\"section-3\">出征と内政をつなげる</h2>\n<p>戦う前に兵糧や兵力を確認する習慣をつけよう。部隊を送り出した後の城の状態も判断材料になる。隣接する城と周囲の勢力を眺め、遠い目標と今できる行動を分けて考えると迷いにくい。</p>\n<h2 id=\"section-4\">最初の確認リスト</h2>\n<ul>\n<li>城の資金と兵糧はどうなっているか。</li>\n<li>配下の武将にはどんな得意分野があるか。</li>\n<li>今すぐ戦う必要があるか、それとも準備を整えるか。</li>\n</ul>\n<p>この入門稿では、隠れた登場条件や収入の内部計算式は公開しない。各行動の最新の説明はゲーム画面で確認しよう。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "城の情報を読む",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "人材の使い道を決める",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "出征と内政をつなげる",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "最初の確認リスト",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "一騎討ちの前に",
+    "summary": "武勇に加え、今の体力と選択を読む。",
+    "order": 5,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "ja",
+    "slug": "duel",
+    "html": "<h2 id=\"section-1\">まず状態を確認する</h2>\n<p>一騎討ちでは、両者の体力と画面に示される斗志・指令を確認する。武力の高低だけで勝敗を決めつけず、現在の状態と装備も判断に含めよう。</p>\n<p><img src=\"/assets/screens/duel.webp\" alt=\"雨中の一騎討ち・開発中の録画より\"></p>\n<h2 id=\"section-2\">指令の説明を読む</h2>\n<p>攻撃などの選択肢は、状況を見ながら使うもの。初めての指令では説明を読み、一手の後に何が変わったかを見る。「この指令なら必ず勝てる」という前提で選ばないこと。</p>\n<h2 id=\"section-3\">画面の数値を見直す</h2>\n<p>装備の能力は人物の表示に影響し、戦闘中にだけ働く効果は基礎属性と区別される。図鑑の数字をそのまま最終ダメージと考えないようにしよう。</p>\n<h2 id=\"section-4\">記録映像について</h2>\n<p>雨、雪、夜やさまざまな場所の一騎討ち映像は、開発中の中文テスト版から採録している。テスト用表示や旧数値を含むため、現在のルール確認にはゲーム内の説明を使ってほしい。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "まず状態を確認する",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "指令の説明を読む",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "画面の数値を見直す",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "記録映像について",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "装備と武将の成長",
+    "summary": "数字だけでなく、条件と役割を見比べる。",
+    "order": 6,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "ja",
+    "slug": "equipment",
+    "html": "<h2 id=\"section-1\">装備の説明を開く</h2>\n<p>武将の装備欄とアイテムの説明で、名称、攻撃・防御、重量や条件を確認しよう。強そうな名前だけで選ばず、使う武将に合っているかを考える。</p>\n<h2 id=\"section-2\">重量と能力を見比べる</h2>\n<p>装備の重量は単なる見た目の情報ではない。現在の人物状態と装備条件をゲーム内で確認すること。サイトの図鑑では基本的な攻撃、防御、重量を抜粋し、取得条件や未公開の個別情報は掲載していない。</p>\n<h2 id=\"section-3\">固有の特長と天賦を分ける</h2>\n<p>人物詳細では固有の特長と成長に関わる天賦を別々に読む。専用の計略や戦法を覚える場合は、ゲーム内の天賦の説明と必要な段階を確認しよう。図鑑に名称があるだけで、最初から使えるとは限らない。</p>\n<h2 id=\"section-4\">図鑑の公開範囲</h2>\n<p>武将は基礎武力・知力・徳望のいずれかが90以上の人物を紹介する。装備は一部を選び、レベル5を超える品は名前だけを掲載する。入手場所、隠し条件、未公開効果はゲームで出会う楽しみとして残している。</p>\n<p><a href=\"/ja/data/equipment/\">選りすぐりの装備を見る</a></p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "装備の説明を開く",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "重量と能力を見比べる",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "固有の特長と天賦を分ける",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "図鑑の公開範囲",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "初めての君主へ",
+    "summary": "最初の一手は、国と人を知ることから。",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "ja",
+    "slug": "first-steps",
+    "html": "<h2 id=\"section-1\">まずは自分の勢力を知る</h2>\n<p>君主と勢力を選んだら、すぐに出征せず、城の情報と武将一覧を開いてみよう。金、兵糧、都市の状態、配下の人材を確認することが最初の準備になる。開始時の配置はシナリオによって異なる。</p>\n<h2 id=\"section-2\">武将の役割を見比べる</h2>\n<p>武力だけで人材を判断しないこと。知力、徳望、統率や固有の特長も確認し、内政と出征の役割を考えよう。公式サイトの図鑑は基礎値の抜粋であり、装備や戦闘中の効果を含む最終値ではない。</p>\n<h2 id=\"section-3\">小さな目標から始める</h2>\n<ol>\n<li>城の資金と兵糧を確認する。</li>\n<li>武将の詳細を開き、得意な役割と装備を読む。</li>\n<li>編成画面で兵種と陣形を確認する。</li>\n<li>戦場では移動範囲と地形を見てから命令する。</li>\n<li>結果を見て、次のターンの方針を決める。</li>\n</ol>\n<p>勝ち筋を一度で覚える必要はない。まずはひとつの城と一隊を理解するところから、自分の三国志を始めよう。</p>\n<h2 id=\"section-4\">次に読む</h2>\n<p><a href=\"/ja/guides/city/\">城の経営</a> と <a href=\"/ja/guides/armies/\">出征前の編成</a> が次の一歩。操作に迷ったら <a href=\"/ja/data/controls/\">操作案内</a> を開こう。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "まずは自分の勢力を知る",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "武将の役割を見比べる",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "小さな目標から始める",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "次に読む",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "出征前的编成",
+    "summary": "把主将、兵种与阵型作为一支部队来考虑。",
+    "order": 3,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "zh-cn",
+    "slug": "armies",
+    "html": "<h2 id=\"section-1\">先从主将出发</h2>\n<p>查看主将的属性、固有特长、当前体力与装备，再决定想让这支部队承担什么任务。官网图鉴是基础数据摘录，出征判断还需要结合游戏里的当前状态。</p>\n<h2 id=\"section-2\">看懂兵种与分队</h2>\n<p>编成画面可以查看兵种和各分队配置。先核对允许使用的兵种、编成条件和界面提示，再考虑计划中的战法。不要只凭总兵力做决定，也要阅读编成栏位的说明。</p>\n<p><img src=\"/assets/screens/army.webp\" alt=\"开发中的编成画面\"></p>\n<h2 id=\"section-3\">阅读阵型说明</h2>\n<p>选阵型时，把它的说明、配置与自己希望采用的打法一起考虑。初次尝试可以保持主将和部队相近，每次只调整少量内容，更容易看清区别。</p>\n<h2 id=\"section-4\">想一想会在哪里交战</h2>\n<p>平地、水域、林地和城防环境会带来不同的交战体验。先看预定行军路线，再做编成。历史录像中的字幕与数值不能直接作为当前规则。</p>\n<h2 id=\"section-5\">最后检查一次</h2>\n<p>依次查看主将状态、装备条件、兵种、分队、阵型和粮食。做好准备后，再阅读 <a href=\"/zh-cn/guides/battle/\">地形与战场</a>。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "先从主将出发",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "看懂兵种与分队",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "阅读阵型说明",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "想一想会在哪里交战",
+        "level": 2
+      },
+      {
+        "id": "section-5",
+        "text": "最后检查一次",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "地形与战场",
+    "summary": "每次行动前，多看一步。",
+    "order": 4,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "zh-cn",
+    "slug": "battle",
+    "html": "<h2 id=\"section-1\">先确认移动范围</h2>\n<p>回合制战场中，部队位置与可移动范围是判断的起点。不要只盯着敌军，也要看己方位置和下一步能够衔接的行动。</p>\n<p><img src=\"/assets/screens/battlefield.webp\" alt=\"水域与移动范围的开发中战场画面\"></p>\n<h2 id=\"section-2\">根据地形思考</h2>\n<p>水域、森林、山地与城防环境会改变交战条件。每次都核对可以到达的格子、能使用的指令和双方位置关系，不凭画面表现猜测精确伤害倍率。</p>\n<h2 id=\"section-3\">读清天气和策略条件</h2>\n<p>策略各自具有目标、距离、消耗和天气等使用条件。行动前先读当前说明；同属火攻的策略也可能有独立限制，不要把某一项规则套给全部策略。</p>\n<h2 id=\"section-4\">从位置进入白刃交锋</h2>\n<p>大战场上的位置选择，会影响接近后的交锋。进入白刃战后，分别观察主将与士卒状态，决定是否继续交战。部分加成只影响士卒，不能直接当成主将也有同样提升。</p>\n<p>本稿不公开隐藏公式或完整策略清单。先养成读条件、看位置的习惯，就能减少许多仓促出击。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "先确认移动范围",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "根据地形思考",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "读清天气和策略条件",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "从位置进入白刃交锋",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "城池经营入门",
+    "summary": "把金钱、粮食与人才放进同一个计划。",
+    "order": 2,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "zh-cn",
+    "slug": "city",
+    "html": "<h2 id=\"section-1\">读懂城池信息</h2>\n<p>城池既是出征的据点，也是整备资源和人才的地方。先看金钱、粮食、农业、产业、人口与统治等信息。不要只盯着一个数字增长，先判断当前势力最缺少的是什么。</p>\n<h2 id=\"section-2\">为人才安排位置</h2>\n<p>武将不只有武力一项属性，还拥有不同的固有特长。把所有名将送上前线之前，也要考虑留守与内政的分工。阅读行动说明，观察执行前后的变化，逐渐认识适合负责各项事务的人才。</p>\n<h2 id=\"section-3\">将内政与出征衔接起来</h2>\n<p>出征前养成核对粮食和兵力的习惯，也要看看派出军队后本城的情况。结合邻接城池和周边势力，分清长远目标与这一回合能做的事。</p>\n<h2 id=\"section-4\">新手检查清单</h2>\n<ul>\n<li>本城的金钱和粮食情况如何？</li>\n<li>现有武将各有什么擅长的方向？</li>\n<li>现在需要交战，还是应该先做好准备？</li>\n</ul>\n<p>本入门稿不公开隐藏登场条件或内部收入公式；各项命令的实际效果，以当前游戏内说明为准。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "读懂城池信息",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "为人才安排位置",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "将内政与出征衔接起来",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "新手检查清单",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "单挑前先看什么",
+    "summary": "不只看武勇，也看当前状态与每一次选择。",
+    "order": 5,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "zh-cn",
+    "slug": "duel",
+    "html": "<h2 id=\"section-1\">先读双方状态</h2>\n<p>进入单挑后，先看双方体力，以及画面中的斗志和可用指令。不能只凭武力高低判断结果，当前状态和装备同样需要纳入考虑。</p>\n<p><img src=\"/assets/screens/duel.webp\" alt=\"雨中单挑，来自开发中的测试录像\"></p>\n<h2 id=\"section-2\">阅读指令说明</h2>\n<p>攻击等选项需要结合局势使用。第一次接触某个指令时，先读说明，再观察行动后发生了什么变化。不要假设某种选择能在所有对局中取胜。</p>\n<h2 id=\"section-3\">区分面板与战斗效果</h2>\n<p>装备会影响人物的显示属性，一些效果则只在实际战斗中结算。官网图鉴是基础数据，不能把其中的数字直接换算为单挑最终伤害。</p>\n<h2 id=\"section-4\">关于展示录像</h2>\n<p>官网所用雨夜、雪地等单挑镜头来自开发中的中文测试版，可能包含测试按钮和旧数值。它们用于展示实际画面；当前规则仍请以游戏内说明为准。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "先读双方状态",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "阅读指令说明",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "区分面板与战斗效果",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "关于展示录像",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "装备与武将成长",
+    "summary": "比较数值，也要读条件与定位。",
+    "order": 6,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "zh-cn",
+    "slug": "equipment",
+    "html": "<h2 id=\"section-1\">打开装备详情</h2>\n<p>通过武将装备栏和物品提示，查看名称、攻击、防御、重量及使用条件。不要只凭名字或单项数值做决定，还要考虑实际使用的武将。</p>\n<h2 id=\"section-2\">同时比较重量与能力</h2>\n<p>重量不只是外观信息。请在游戏中核对当前人物状态与装备要求。官网精选图鉴只摘录基础攻击、防御、重量等公开信息，不提供获取地点或隐藏条件。</p>\n<h2 id=\"section-3\">区分固有特长和天赋</h2>\n<p>武将详情中的固有特长与成长天赋有不同职责。专属谋略和战法需要结合天赋说明及学习阶段理解，不能因为在资料中看见名称，就当作开局已经掌握。</p>\n<h2 id=\"section-4\">官网图鉴的公开范围</h2>\n<p>武将精选标准为基础武力、智力、德望中至少一项达到90。装备仅选取一部分展示，5级以上物品只公开名称。取得方式、隐藏条件与未公开效果，留给游戏中的探索。</p>\n<p><a href=\"/zh-cn/data/equipment/\">查看精选装备</a></p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "打开装备详情",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "同时比较重量与能力",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "区分固有特长和天赋",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "官网图鉴的公开范围",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "新君主的第一步",
+    "summary": "先认识一座城和一支军队，再开始你的征途。",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "zh-cn",
+    "slug": "first-steps",
+    "html": "<h2 id=\"section-1\">先了解自己的势力</h2>\n<p>选择君主与势力后，先打开城池信息和武将列表。看看现有的金钱、粮食、城市状况和可用人才，再决定第一次行动。不同剧本的初始局势不同，不必照搬某一场录像的开局。</p>\n<h2 id=\"section-2\">不只看武力</h2>\n<p>武将的武力、智力、德望、统率各有侧重。查看人物详情、固有特长与装备，再考虑内政和出征的分工。官网图鉴展示的是基础数据，不包含装备及战斗临时效果，不能直接当作战斗最终结果。</p>\n<h2 id=\"section-3\">给自己一个小目标</h2>\n<ol>\n<li>核对本城的金钱与粮食。</li>\n<li>打开武将详情，阅读属性、特长和装备说明。</li>\n<li>在编成画面确认兵种与阵型。</li>\n<li>进入战场后，先看移动范围与地形，再下达指令。</li>\n<li>看清行动结果，再安排下一回合。</li>\n</ol>\n<p>不用一口气记住所有系统。先经营好一座城、理解一支部队，在尝试中形成自己的节奏。</p>\n<h2 id=\"section-4\">接着阅读</h2>\n<p>建议继续阅读 <a href=\"/zh-cn/guides/city/\">城池经营入门</a> 和 <a href=\"/zh-cn/guides/armies/\">出征前的编成</a>。不熟悉操作时可查看 <a href=\"/zh-cn/data/controls/\">操作说明</a>。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "先了解自己的势力",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "不只看武力",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "给自己一个小目标",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "接着阅读",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "Preparing an army",
+    "summary": "Consider the commander, troop types and formation together.",
+    "order": 3,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "en",
+    "slug": "armies",
+    "html": "<h2 id=\"section-1\">Begin with the commander</h2>\n<p>Read the commander’s attributes, innate trait, current HP and equipment. Think about the job this army should perform. Website base attributes are a reference; your decision should also use the officer’s current in-game state.</p>\n<h2 id=\"section-2\">Inspect the composition</h2>\n<p>The preparation screen shows troop types and the arrangement of subunits. Check available types, composition conditions and the interface explanations. Total troop count is only part of the information you need.</p>\n<p><img src=\"/assets/screens/army.webp\" alt=\"Army preparation in a development build\"></p>\n<h2 id=\"section-3\">Read the formation</h2>\n<p>Consider a formation’s description and arrangement alongside the way you intend to fight. When learning, change a few things at a time while keeping the commander and army similar. It will be easier to understand the difference.</p>\n<h2 id=\"section-4\">Picture the battlefield</h2>\n<p>Open ground, water, woodland and fortified positions produce different encounters. Study the planned route before choosing your composition. Subtitles and values from older recordings are not a specification of the current rules.</p>\n<h2 id=\"section-5\">Before you march</h2>\n<p>Review the commander, equipment requirements, troop types, subunits, formation and supplies. Then continue to <a href=\"/en/guides/battle/\">Terrain and battle</a>.</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "Begin with the commander",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "Inspect the composition",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "Read the formation",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "Picture the battlefield",
+        "level": 2
+      },
+      {
+        "id": "section-5",
+        "text": "Before you march",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "Terrain and battle",
+    "summary": "Look one move ahead before issuing an order.",
+    "order": 4,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "en",
+    "slug": "battle",
+    "html": "<h2 id=\"section-1\">Check movement range</h2>\n<p>In turn-based battles, your position and available movement are the starting point for each decision. Consider nearby allies as well as enemies, and think about the action that can follow your move.</p>\n<p><img src=\"/assets/screens/battlefield.webp\" alt=\"Water terrain and movement range in a development build\"></p>\n<h2 id=\"section-2\">Read the terrain</h2>\n<p>Water, woodland, mountains and fortifications change the situation. Check reachable tiles, available commands and relative positions each time. Visual damage differences in a recording do not establish an exact terrain multiplier.</p>\n<h2 id=\"section-3\">Check weather and stratagem conditions</h2>\n<p>Stratagems have their own targets, range, costs and weather conditions. Read the current description before using one. Even fire-related stratagems can have individual restrictions; do not generalize one rule to every ability.</p>\n<h2 id=\"section-4\">From position to close combat</h2>\n<p>Your battlefield positioning leads into melee encounters. During melee, inspect the commander and soldiers separately when deciding whether to continue. Some bonuses affect soldiers only and should not be assumed to improve the commander.</p>\n<p>This draft does not reveal hidden formulas or a complete stratagem list. Begin by reading visible conditions and avoiding rushed advances.</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "Check movement range",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "Read the terrain",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "Check weather and stratagem conditions",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "From position to close combat",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "Managing a city",
+    "summary": "Plan your resources and your people together.",
+    "order": 2,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "en",
+    "slug": "city",
+    "html": "<h2 id=\"section-1\">Read the city information</h2>\n<p>A city supports both administration and military preparation. Look at gold, food, agriculture, industry, population and rule. Before improving a single value, ask what your faction currently needs most.</p>\n<h2 id=\"section-2\">Give people a purpose</h2>\n<p>Officers have several attributes and different innate traits. Before sending every famous general to the front, consider who will remain to manage the city. Read an action’s explanation and compare the city before and after carrying it out.</p>\n<h2 id=\"section-3\">Connect administration to your campaign</h2>\n<p>Make a habit of checking supplies and troop strength before marching. Consider the city’s condition after the army leaves as well. Study neighbouring cities and factions, then distinguish your long-term ambition from what you can accomplish this turn.</p>\n<h2 id=\"section-4\">A beginner’s checklist</h2>\n<ul>\n<li>What is the state of the city’s gold and food?</li>\n<li>What roles suit the officers available to you?</li>\n<li>Is it time to fight, or time to prepare?</li>\n</ul>\n<p>This introductory draft does not disclose hidden appearance conditions or internal income formulas. Consult the current in-game descriptions for the effects of individual commands.</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "Read the city information",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "Give people a purpose",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "Connect administration to your campaign",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "A beginner's checklist",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "Before a duel",
+    "summary": "Read the current state, then choose your next action.",
+    "order": 5,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "en",
+    "slug": "duel",
+    "html": "<h2 id=\"section-1\">Check both officers</h2>\n<p>Before choosing a command, inspect both officers’ HP, the spirit gauge and available actions. Strength alone does not determine the result; consider current condition and equipment too.</p>\n<p><img src=\"/assets/screens/duel.webp\" alt=\"A duel in the rain, from a development recording\"></p>\n<h2 id=\"section-2\">Read command descriptions</h2>\n<p>Use actions in response to the situation. When trying an unfamiliar command, read its explanation and observe what changes after the exchange. Do not assume a single option guarantees victory in every duel.</p>\n<h2 id=\"section-3\">Separate attributes from combat effects</h2>\n<p>Equipment can affect displayed attributes, while some effects are applied only during combat. The website’s base data should not be treated as a direct measure of final duel damage.</p>\n<h2 id=\"section-4\">About the footage</h2>\n<p>Rain, snow and night scenes on this site come from Chinese-language development recordings. They may include test controls and older values. They demonstrate the game’s actual visuals; current rules should be checked in the game.</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "Check both officers",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "Read command descriptions",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "Separate attributes from combat effects",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "About the footage",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "Equipment and officer growth",
+    "summary": "Compare requirements and roles as well as numbers.",
+    "order": 6,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "en",
+    "slug": "equipment",
+    "html": "<h2 id=\"section-1\">Open the equipment details</h2>\n<p>Inspect the officer’s equipment slots and item tooltips. Read the name, attack, defense, weight and requirements. A famous name or a high single stat is not enough to decide whether an item suits its wielder.</p>\n<h2 id=\"section-2\">Compare weight and capability</h2>\n<p>Weight is part of equipment selection. Check the current officer state and requirements in the game. The website catalogue extracts basic attack, defense and weight, without revealing acquisition locations or hidden conditions.</p>\n<h2 id=\"section-3\">Distinguish innate traits from talents</h2>\n<p>Read innate traits separately from the talent tree. Exclusive stratagems and combat techniques may require learning through the relevant talent. Seeing an ability’s name in a catalogue does not mean it is available at the beginning of a campaign.</p>\n<h2 id=\"section-4\">What the public catalogue includes</h2>\n<p>The officer selection requires a base strength, intelligence or prestige of at least 90. Only selected equipment is shown. Items above level 5 appear by name alone. Acquisition methods, hidden conditions and unrevealed effects remain for you to discover in the game.</p>\n<p><a href=\"/en/data/equipment/\">Browse selected equipment</a></p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "Open the equipment details",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "Compare weight and capability",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "Distinguish innate traits from talents",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "What the public catalogue includes",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "Your first steps as a ruler",
+    "summary": "Learn one city and one army before planning a grand campaign.",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "en",
+    "slug": "first-steps",
+    "html": "<h2 id=\"section-1\">Get to know your faction</h2>\n<p>After choosing a ruler and faction, open the city information and officer list. Check your gold, food, city conditions and available people before planning your first move. Starting positions vary by scenario; a recorded campaign is an example rather than a universal opening.</p>\n<h2 id=\"section-2\">Look beyond strength</h2>\n<p>An officer’s intelligence, prestige, command and innate trait also matter. Read the officer and equipment details before assigning a role. The website catalogue lists base attributes, without equipment bonuses or temporary combat effects. Those numbers alone do not predict a battle’s outcome.</p>\n<h2 id=\"section-3\">Start with a small goal</h2>\n<ol>\n<li>Check the city’s gold and food.</li>\n<li>Open an officer’s details and read their attributes, trait and equipment.</li>\n<li>Review troop types and formation before marching.</li>\n<li>On the battlefield, inspect movement range and terrain before issuing orders.</li>\n<li>Review the result before planning the next turn.</li>\n</ol>\n<p>You do not need to master every system at once. Begin with one city and one army, then develop your own approach.</p>\n<h2 id=\"section-4\">Read next</h2>\n<p>Continue with <a href=\"/en/guides/city/\">Managing a city</a> and <a href=\"/en/guides/armies/\">Preparing an army</a>. For input basics, see <a href=\"/en/data/controls/\">Controls</a>.</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "Get to know your faction",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "Look beyond strength",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "Start with a small goal",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "Read next",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "操作案内",
+    "summary": "マウス・キーボード・ゲームパッドで遊ぶ。",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "project.godot input map; author platform and control confirmation (2026-10-27)",
+    "category": "manual",
+    "lang": "ja",
+    "slug": "controls",
+    "html": "<h2 id=\"section-1\">マウス</h2>\n<p>画面上の項目やボタンを選んで操作する。武将や装備の詳細は、その項目から開いて説明を確認しよう。画面ごとの案内を優先してほしい。</p>\n<h2 id=\"section-2\">キーボード</h2>\n<p>基本の方向操作には矢印キーとWASD、決定にはEnterまたはSpace、取り消しにはEscを使用する。画面固有の操作は、その画面の表示で確認する。</p>\n<h2 id=\"section-3\">ゲームパッド</h2>\n<p>方向パッドまたは左スティックで項目を選び、主決定ボタンで決定、主取消ボタンで戻る。ボタン表記は機種や設定によって異なるため、画面のガイドを確認しよう。</p>\n<h2 id=\"section-4\">対応プラットフォーム</h2>\n<p>PCはWindowsとmacOSに対応する計画。AndroidとiOSはPC版発売と同時ではなく、後続のモバイル対応として進める。NSは将来計画。発売日と動作環境は確定後に案内する。</p>\n<p>この表は現在の入力設定に基づく基本操作の校正稿。全画面の個別操作を網羅したものではない。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "マウス",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "キーボード",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "ゲームパッド",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "対応プラットフォーム",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "操作说明",
+    "summary": "支持鼠标、键盘与手柄。",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "project.godot input map; author platform and control confirmation (2026-10-27)",
+    "category": "manual",
+    "lang": "zh-cn",
+    "slug": "controls",
+    "html": "<h2 id=\"section-1\">鼠标</h2>\n<p>通过画面中的项目和按钮进行选择。武将、装备等信息可从相应入口打开详情并阅读提示，具体交互以各画面说明为准。</p>\n<h2 id=\"section-2\">键盘</h2>\n<p>基础方向操作支持方向键与WASD；Enter或Space用于确认，Esc用于取消。各场景的专用操作请结合当前画面的按键提示。</p>\n<h2 id=\"section-3\">手柄</h2>\n<p>使用方向键或左摇杆选择项目，主确认键执行，主取消键返回。不同手柄的按键字样不同，请以游戏内提示和配置为准。</p>\n<h2 id=\"section-4\">平台安排</h2>\n<p>PC支持Windows和macOS。Android与iOS均纳入移动端支持，安排在PC首发之后；NS作为未来计划。具体发售日期与配置要求将在确认后公布。</p>\n<p>本说明根据当前输入配置整理，为基础操作校对稿，尚不覆盖每个场景的专用快捷键。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "鼠标",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "键盘",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "手柄",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "平台安排",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "Controls",
+    "summary": "Play with a mouse, keyboard or gamepad.",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "project.godot input map; author platform and control confirmation (2026-10-27)",
+    "category": "manual",
+    "lang": "en",
+    "slug": "controls",
+    "html": "<h2 id=\"section-1\">Mouse</h2>\n<p>Select items and buttons on screen. Open officer and equipment details from their respective entries, and follow the guidance shown in each screen.</p>\n<h2 id=\"section-2\">Keyboard</h2>\n<p>Basic navigation uses the arrow keys or WASD. Enter or Space confirms, and Esc cancels. Check each screen’s hints for context-specific commands.</p>\n<h2 id=\"section-3\">Gamepad</h2>\n<p>Navigate with the directional pad or left stick, confirm with the primary confirm button, and go back with the primary cancel button. Button labels vary between controllers; follow the in-game hints and configuration.</p>\n<h2 id=\"section-4\">Platform plans</h2>\n<p>PC support covers Windows and macOS. Android and iOS are both planned after the PC launch. NS remains a future plan. Release dates and system requirements will be announced when confirmed.</p>\n<p>This is a basic controls draft based on the current input configuration. It does not yet document every screen-specific shortcut.</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "Mouse",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "Keyboard",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "Gamepad",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "Platform plans",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "十年の歩み、いまも続く開発",
+    "summary": "木頭鉛筆の二人と、作り直すたびに残った想い。",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "https://www.bilibili.com/opus/1257756369220534292 ; https://www.bilibili.com/opus/1262555088971366406 ; author studio attribution",
+    "category": "creators",
+    "lang": "ja",
+    "slug": "ten-years",
+    "html": "<h2 id=\"section-1\">木頭鉛筆について</h2>\n<p>木頭が美術、鉛筆がプログラムを担当する小さな制作チーム。英語表記はWood Pencil Studio。『三国：乱世蒼生』の開発を続けている。</p>\n<h2 id=\"section-2\">作り直しながら、ここまで</h2>\n<p>2026年10月11日の開発者投稿では、十年にわたる歩みが振り返られている。2014年の紹介記事の記憶、RPG MakerからUnity、そしてGodotへ移った道のり。公開まで一直線に進んだのではなく、作り直しや以前の版を手放す決断もあった。</p>\n<p>美術を担当する仲間との再出発を経て、いまの作品へ。長い時間そのものを飾るのではなく、城の経営、戦場、人物の一つひとつを、遊べる形へと積み重ねていく。</p>\n<h2 id=\"section-3\">これからの一歩</h2>\n<p>10月24日の投稿ではAndroidのテストビルドを紹介した。現在の方針はPC版を優先し、安定化と画面・操作の調整を進めてからモバイルへ展開すること。AndroidとiOSに対応し、NSは将来の計画としている。</p>\n<h2 id=\"section-4\">開発者の原文を読む</h2>\n<ul>\n<li><a href=\"https://www.bilibili.com/opus/1257756369220534292\">十年の開発を振り返る・2026年10月11日</a></li>\n<li><a href=\"https://www.bilibili.com/opus/1262555088971366406\">Androidテストビルドについて・2026年10月24日</a></li>\n</ul>\n<p>開発者の公開投稿をもとに、これまでの歩みをまとめました。新しい進展も、これから少しずつお届けします。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "木頭鉛筆について",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "作り直しながら、ここまで",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "これからの一歩",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "開発者の原文を読む",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "十年坚持，仍在继续",
+    "summary": "木头与铅笔，以及一次次重来之后留下的作品。",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "https://www.bilibili.com/opus/1257756369220534292 ; https://www.bilibili.com/opus/1262555088971366406 ; author studio attribution",
+    "category": "creators",
+    "lang": "zh-cn",
+    "slug": "ten-years",
+    "html": "<h2 id=\"section-1\">关于木头铅笔</h2>\n<p>我们是 木头铅笔 | Wood Pencil Studio：木头负责美术，铅笔负责程序。\n我们两个人正在制作《三国：乱世苍生》，一款受到童年非常喜欢的游戏《三国志II：霸王的大陆》启发而开发的复古像素放三国策略游戏。</p>\n<h2 id=\"section-2\">一次次重来，走到今天</h2>\n<p>时间拨回到 2013年的某一天，铅笔在上网时看到了当时晴天之秀吞食天地 Demo 视频深受感慨，彼时作为程序员的他便萌生了复刻自己童年最喜欢的游戏之一：南梦宫的FC平台游戏《三国志II：霸王的大陆》。\n而从此踏上了这条童年游戏复刻的漫漫长路，在2014年贴吧发布Demo后，迎来了众多吧友的支持，也得到了游民星空的一次文章报道，感兴趣的可以看看这篇文章：\n<a href=\"https://wap.gamersky.com/news/Content-503180.html\">https://wap.gamersky.com/news/Content-503180.html</a></p>\n<p>从RPG Maker，到Unity，再到Godot，项目经历过版本推倒和重新开始。它不是一条笔直的路线，有些尝试被放下，有些想法在重做中延续。\n在24年，一位ID为“造梦”的网游通过QQ找到了铅笔，一番沟通得知，原来还有像他一样的玩家在等一款和我们一样真正喜欢的想要的“霸王大陆”作品。于是铅笔和木头再一次拾起了角落里的项目，重新出发后，作品渐渐成为今天的样子。\n我们想把对三国策略游戏的热爱，落实为城池经营、战场交锋与人物故事中的一个个细节。</p>\n<h2 id=\"section-3\">当前，我们在打磨最后的每一处细节</h2>\n<p>目前，游戏商店页和上架时间主要会取决于 Steam 账号及商店审核进度，我们也将尽可能的加快。\n我们现在仍然在打磨各处的细节，图标的表现、操作的流畅性、操作流程的便携性、数据的平衡…每一个我们都用心在打磨，我们的三国游戏不一定是最好的，但是一定是最用心去做的。</p>\n<h2 id=\"section-4\">下一步，继续把它做好</h2>\n<p>当前安排仍以PC版本为先，在PC段版本稳定之后将进一步完善移动端的UI适配和操作适配。Android与iOS同步纳入移动支持方向。\n在不久的未来我们将Switch作为我们的另一个主要适配和上线平台，因为我们自己也一致想在掌机上玩我们的游戏。\n并且在之后的下一个大版本，我们将承诺更新更多剧本、开放自建武将和君主功能、开放创意工坊（让玩家能够自己编排自己的剧本和武将数据进行游玩）。</p>\n<h2 id=\"section-5\">联机对战？好主意</h2>\n<p>在最后，我们也已经将双方联机对战的功能纳入计划，再建立房间确认对战规则后，基本采用以下方式推进：\n<code>双方选择存档数据</code> -&gt; <code>挑选出站武将</code> -&gt; <code>选择城池或战场地形</code> -&gt; <code>选择战斗方式：战场争夺、纯白刃战对决、纯单挑对决</code> -&gt; <code>开始对决</code>\n大家有更好的联机玩法的想法也可以给我们留言反馈。</p>\n<h2 id=\"section-6\">阅读开发者原文</h2>\n<ul>\n<li><a href=\"https://www.bilibili.com/opus/1257756369220534292\">关于十年开发的回顾 · 2026年10月11日</a></li>\n<li><a href=\"https://www.bilibili.com/opus/1262555088971366406\">Android测试包进展 · 2026年10月24日</a></li>\n</ul>\n<p>这篇记录基于作者公开动态整理。关于这款游戏的下一步，我们也会继续在这里与你分享。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "关于木头铅笔",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "一次次重来，走到今天",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "当前，我们在打磨最后的每一处细节",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "下一步，继续把它做好",
+        "level": 2
+      },
+      {
+        "id": "section-5",
+        "text": "联机对战？好主意",
+        "level": 2
+      },
+      {
+        "id": "section-6",
+        "text": "阅读开发者原文",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "Ten years, still moving forward",
+    "summary": "Wood Pencil Studio and a project shaped by starting again.",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "https://www.bilibili.com/opus/1257756369220534292 ; https://www.bilibili.com/opus/1262555088971366406 ; author studio attribution",
+    "category": "creators",
+    "lang": "en",
+    "slug": "ten-years",
+    "html": "<h2 id=\"section-1\">Meet Wood Pencil Studio</h2>\n<p>We are a small team: 木头 (Wood) creates the art, and 铅笔 (Pencil) writes the code. Together, we are making Three Kingdoms: Fate of the People.</p>\n<h2 id=\"section-2\">A path of rebuilding</h2>\n<p>The developer’s October 11, 2026 post reflects on ten years of development and recalls coverage from 2014. The project moved from RPG Maker to Unity and then Godot, with discarded versions and fresh starts along the way. Some experiments ended; other ideas survived the rebuilds.</p>\n<p>A renewed collaboration with an art partner helped shape the current game. Our aim is to turn a love of Three Kingdoms strategy into playable details: managing cities, commanding battles and encountering its people.</p>\n<h2 id=\"section-3\">The next step</h2>\n<p>The October 24 post shared progress on an Android test build. PC remains the priority. Mobile screen and control adaptation will follow a stable PC version, with Android and iOS both in the plan. NS is a future goal.</p>\n<h2 id=\"section-4\">Read the original posts</h2>\n<ul>\n<li><a href=\"https://www.bilibili.com/opus/1257756369220534292\">Looking back on ten years · October 11, 2026</a></li>\n<li><a href=\"https://www.bilibili.com/opus/1262555088971366406\">Android test build progress · October 24, 2026</a></li>\n</ul>\n<p>Based on our public development notes. We will keep sharing the next steps as the project grows.</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "Meet Wood Pencil Studio",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "A path of rebuilding",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "The next step",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "Read the original posts",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "開発の現在地と、これから",
+    "summary": "PCを先に。その先のプラットフォームへ。",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "author platform and website scope confirmation (2026-10-27); public Android development post",
+    "category": "devlog",
+    "lang": "ja",
+    "slug": "roadmap",
+    "html": "<h2 id=\"section-1\">現在の重点</h2>\n<p>PC版の開発と安定化を優先している。WindowsとmacOSに対応し、マウス・キーボード・ゲームパッドで遊べる構成を進める。Steamのストアページは準備中で、公開後に公式サイトから案内する。</p>\n<h2 id=\"section-2\">モバイルはPCの後に</h2>\n<p>Androidのテストビルドを制作済み。AndroidとiOSの双方に対応する方針だが、PC版との同時発売には含めない。画面と操作のモバイル向け調整を進めてから公開する。</p>\n<h2 id=\"section-3\">将来の計画</h2>\n<p>NSへの展開は将来計画。発売時期、認証状況、配信先の決定を示す発表ではない。日程や動作環境は、確定した情報から順に掲載していく。</p>\n<h2 id=\"section-4\">公式サイトについて</h2>\n<p>日本語・中国語・英語の情報を用意している。攻略記事は校正中の入門稿で、数値や操作の変更に合わせて更新する。韓国語版はまだ準備中。</p>\n<p>最新の開発発信は <a href=\"https://space.bilibili.com/288185013\">Bilibili</a> と <a href=\"https://x.com/woodpencil922\">X</a> で読める。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "現在の重点",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "モバイルはPCの後に",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "将来の計画",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "公式サイトについて",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "开发进展与后续规划",
+    "summary": "先把PC版本做好，再走向更多平台。",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "author platform and website scope confirmation (2026-10-27); public Android development post",
+    "category": "devlog",
+    "lang": "zh-cn",
+    "slug": "roadmap",
+    "html": "<h2 id=\"section-1\">当前重点</h2>\n<p>优先推进PC版本的开发与稳定。PC支持Windows与macOS，操作支持鼠标、键盘和手柄。Steam商店页准备中，公开后会在官网提供入口。</p>\n<h2 id=\"section-2\">移动端放在PC首发之后</h2>\n<p>目前已有Android测试包。Android与iOS均纳入移动支持，但不在PC首发同期考虑；需要继续完成屏幕与操作适配，再安排发布。</p>\n<h2 id=\"section-3\">未来计划</h2>\n<p>NS作为未来平台计划，不代表已确定发售日期、认证状态或发行安排。具体时间与配置要求，待确认后逐项公布。</p>\n<h2 id=\"section-4\">官网内容建设</h2>\n<p>官网优先提供日文、中文与英文。入门攻略为待校对稿，后续结合数值和操作调整持续维护。韩文版暂未制作，入口保留准备提示。</p>\n<p>近期开发分享请关注 <a href=\"https://space.bilibili.com/288185013\">B站主页</a> 与 <a href=\"https://x.com/woodpencil922\">X主页</a>。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "当前重点",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "移动端放在PC首发之后",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "未来计划",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "官网内容建设",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "Development and what comes next",
+    "summary": "PC first, with more platforms to follow.",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "author platform and website scope confirmation (2026-10-27); public Android development post",
+    "category": "devlog",
+    "lang": "en",
+    "slug": "roadmap",
+    "html": "<h2 id=\"section-1\">Current focus</h2>\n<p>Development and stability on PC come first. PC support covers Windows and macOS, with mouse, keyboard and gamepad controls. The Steam store page is in preparation; the official site will link to it once it is public.</p>\n<h2 id=\"section-2\">Mobile follows the PC launch</h2>\n<p>An Android test build exists. Both Android and iOS are planned, but mobile is not part of the PC launch. Screen layout and controls need further adaptation before a mobile release.</p>\n<h2 id=\"section-3\">Future plans</h2>\n<p>NS is a future platform goal. This is not an announcement of a release date, certification status or distribution arrangement. Dates and system requirements will be published when confirmed.</p>\n<h2 id=\"section-4\">Building the official site</h2>\n<p>The website prioritizes Japanese, Chinese and English. Beginner guides are editorial drafts awaiting review and will be maintained as the game changes. The Korean version is not yet being produced.</p>\n<p>Follow development on <a href=\"https://space.bilibili.com/288185013\">Bilibili</a> and <a href=\"https://x.com/woodpencil922\">X</a>.</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "Current focus",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "Mobile follows the PC launch",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "Future plans",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "Building the official site",
+        "level": 2
+      }
+    ]
+  }
+]
