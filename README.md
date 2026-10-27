@@ -118,3 +118,7 @@ pnpm-workspace.yaml已显式声明根包，避免云端旧pnpm报packages field 
 游戏以具有手绘质感的武将头像、像素将士、山河地图与卷轴式界面，呈现汉末三国的群雄与城池。从江河沿岸的营垒，到城关、山林与舟船上的交锋，不同场景共同构成这段征途。
 
 在一城一地的经营中积蓄力量，在一次次用人与征战中推进局势。你所追求的天下，将从当下的每一道命令开始。
+
+## D1留言与Turnstile
+
+留言由Worker在服务端调用D1 REST /raw，兼容现有messages表；浏览器继续调用本站API。公开账户／数据库／Site Key已配置，私密值由运行时D1_API_TOKEN与TURNSTILE_SECRET_KEY提供，不在源码或构建产物中。D1可读但安全验证未配置时仍禁止投稿；成功投稿直接公开。见docs/D1留言与Turnstile配置.md。

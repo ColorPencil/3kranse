@@ -99,3 +99,13 @@ final result: passed
 - 浏览器实际验证：日文、英文手动选择后回到根路径仍保持选择；参数与main锚点保留；英文偏好下可直达日文攻略；手机菜单切到同一篇中文攻略，武将切换到同一位英文武将；韩文准备页后根入口仍为中文。1440×900桌面与390×844手机正常，手机内容宽375，无横向溢出；error／warn为空。
 - Pages兼容构建、Workers最终构建和27项回归通过（含8项语言边界测试）；312个HTML的语言菜单、首屏样式及7580处内部资源检查通过。用作者给定SITE_URL构建，根canonical为https://www.3kranse.com/zh-cn/，303条站点地图地址有效。没有修改云端变量、推送或执行发布。
 - 证据在docs/qa/：language-home-desktop.jpg、language-order-desktop.jpg、language-order-mobile.jpg、language-browser-qa.json、language-static-qa.json。
+
+## 2026-10-27追加：D1 REST留言与Turnstile
+
+- 默认留言数据源改为服务端D1 REST /raw，兼容现有messages五列。IF NOT EXISTS创建message_metadata与IP／时间索引，保存浏览器白名单和幂等信息，不更改原表；成功投稿直接公开，公开API不返回私有IP字段和浏览器信息。
+- Turnstile公钥使用作者给定值，私钥与D1令牌仅由运行时Secret读取。服务端验证success、当前hostname与guestbook action。只有D1配置时可阅读，验证码配置未齐时禁止投稿。keep_vars保留控制台设置；集中维护CSP，仅增加官方脚本与frame来源。
+- 36项回归通过，含9项内存SQLite实际SQL集成测试：参数化写入、可信IP、私有字段过滤、数字游标分页、验证失败无留言、幂等重放、跨实例每IP5条限额、元数据失败回滚、上游错误不泄密。发现并修复CAST字符串别名影响数字ID排序的问题。
+- Pages兼容构建与最终Workers构建通过；Wrangler dry-run打包通过。312个HTML／7580处链接和资源检查通过；浏览器输出未出现D1_API_TOKEN、TURNSTILE_SECRET_KEY、cfat令牌或D1管理API地址。真实本地workerd的8项HTTP检查通过，缺少机密时投稿503，状态不含私密值；韩文和服务器私有文件404。
+- 桌面1440px、390px手机与320px英文窄屏检查通过，手机内容宽375／305，无横向溢出。验证码不足300px时使用compact；失败提示和重新验证入口可用，投稿按钮禁用。真实加载了Cloudflare官方“总失败”测试公钥，600010为预期测试结果；未点击解决验证码或提交留言。修正官方组件语言参数为小写zh-cn，去除自动重复重试。
+- 线上只读D1检查因当前环境连接不可用未完成；没有线上写入或发布。生产域名／真实私钥／D1权限仍需作者在控制台配置后完成一次实际投稿。没有持久化作者粘贴的私密值。
+- 证据：docs/qa/d1-turnstile-failure-mobile.jpg、d1-turnstile-en-320.jpg、d1-guestbook-preparing-desktop.jpg、d1-browser-qa.json、d1-workers-http-qa.json、d1-static-qa.json、d1-live-readonly.json。当前配置与操作说明在docs/D1留言与Turnstile配置.md。

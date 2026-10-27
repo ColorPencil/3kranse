@@ -599,3 +599,9 @@ a.officer-step:hover { border-color: var(--red); background: #fff9eb; }
   .officer-switcher { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .officer-step { min-width: 0; gap: 9px; padding: 7px 10px; }
 }
+
+/* Compact verification fits inside padded phone forms without widening the page. */
+.turnstile-field { margin: 20px 0; min-width: 0; }
+.turnstile-field > p { font-size: 13px; margin: 0 0 10px; }
+.turnstile-widget { width: 100%; min-width: 0; min-height: 65px; }
+.verification-retry { margin-top: 12px; font-size: 12px; }

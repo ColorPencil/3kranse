@@ -1,4 +1,5 @@
 import http from 'node:http';
+import { contentSecurityPolicy } from './security.mjs';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { loadEnvFile } from 'node:process';
@@ -34,7 +35,7 @@ http.createServer(async (req, res) => {
     res.writeHead(status, {
       'Content-Type': types[path.extname(file)] || 'application/octet-stream',
       'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin',
-      'Content-Security-Policy': "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; media-src 'self'; connect-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+      'Content-Security-Policy': contentSecurityPolicy,
       'Cache-Control': path.extname(file) === '.html' ? 'no-cache' : 'public, max-age=3600',
     });
     res.end(req.method === 'HEAD' ? undefined : data);

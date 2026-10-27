@@ -10,7 +10,7 @@
 - 攻略源文件在`content/`，目前为三语校对稿；校对完成后更新`editorialReview`。不把旧测试录像数值当作当前规则，也不将内部实现术语写进玩家说明。
 - 武将精选基础`stre`、`inte`、`ste`至少一项90以上；展示基础属性，已按用户2026-10-27补充授权展示这83位精选武将的固有技能说明、效果与完整天赋节点；不导出装备关联和隐藏登场条件。
 - 装备只精选展示。8级及以上物品只保留多语言名称（用户明确“不含8级”，1—7级可展示详情与图标），**导出数据、公开JS、图标文件均不得携带它们的细节**，不能只靠CSS隐藏。使用`scripts/export_game_data.py`维护公开白名单。
-- 留言后端由作者提供。token只能存服务端环境变量，不能放进`VITE_*`或浏览器。IP来自socket或明确受信任代理，忽略浏览器提供的IP。昵称留空使用`玩家_{IP}`，前端应说明这会公开IP并允许用户改名。
+- 留言默认使用D1 REST，由Worker提供同源业务接口，保留旧自建后端兼容模式。token只能存服务端环境变量，不能放进`VITE_*`或浏览器。IP来自socket或明确受信任代理，忽略浏览器提供的IP。昵称留空使用`玩家_{IP}`，前端应说明这会公开IP并允许用户改名。
 - 验证码必须在服务端校验。未配置接口时明确准备中，不能假成功或放入伪造玩家留言。接口约定在`docs/玩家留言接口约定.md`。
 - 新增代码的赋值、二元运算符两侧留空格；重要业务规则写原因注释。必要校验集中复用，测试关注公开边界和实际行为，不添加无用测试。
 - UI在`src/`。保留`.openai/hosting.json`、`worker/index.js`、`scripts/prepare-sites-build.mjs`、`tests/sites-worker.test.mjs`的模板兼容职责；Node预览与独立的`cloudflare/pages-worker.mjs`共用留言校验；Pages构建用`pnpm run build:pages`，输出`dist/client`。
@@ -29,3 +29,6 @@
 - 2026-10-27部署追加：当前用户使用Workers控制台，支持wrangler.jsonc与build:workers；输出固定dist/client，main复用cloudflare/pages-worker.mjs，ASSETS静态优先，留言与韩文入口run_worker_first。保留build:pages。工具链固定pnpm 11.25.0、Node 24、Wrangler 4.153.0；pnpm-workspace显式声明根包，不能恢复缺少packages的旧配置。
 
 - 2026-10-27语言追加：导航顺序中文、日文、英文、韩文；根路径首次访问按浏览器语言选择三语，手动选择保存在3kranse.language并优先使用。中文语言变体统一zh-cn，不支持的语言回退中文；韩文不自动跳转，仍保留404准备页。显式语言及内容链接不被自动覆盖。禁用存储时仍可访问；无JS时根页与通用404为中文。
+
+- 2026-10-27留言追加：默认使用服务端D1 REST /raw接口，兼容作者现有messages五列；自动以IF NOT EXISTS初始化message_metadata附属表和IP／时间索引，保留原表与已有留言。附属表保存白名单浏览器信息及幂等信息；公开列表只返回昵称、正文、时间、ID。D1投稿直接公开，不假称人工审核。
+- 验证码默认Cloudflare Turnstile，服务端校验success、hostname与guestbook action；Site Key可公开，D1_API_TOKEN与TURNSTILE_SECRET_KEY仅存运行时Secret，不进源码或浏览器。可以先开放读取，缺少验证码配置仍禁止投稿。keep_vars保留控制台配置；旧上游与图片验证码仅为兼容模式。

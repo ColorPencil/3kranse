@@ -1,7 +1,8 @@
 import { createGuestbookHandler, guestbookConfig } from '../server/guestbook.mjs';
+import { contentSecurityPolicy } from '../server/security.mjs';
 
 // One handler per environment retains its local throttle between requests in this isolate.
-// The author's backend must still enforce a global limit across all Cloudflare isolates.
+// The D1 write also checks the per-IP limit globally across Cloudflare isolates.
 const handlers = new WeakMap();
 
 export default {
@@ -26,7 +27,7 @@ export default {
       headers.set('Cache-Control', 'no-cache');
       headers.set('X-Content-Type-Options', 'nosniff');
       headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-      headers.set('Content-Security-Policy', "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; media-src 'self'; connect-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'");
+      headers.set('Content-Security-Policy', contentSecurityPolicy);
       return new Response(request.method === 'HEAD' ? null : page.body, { status: 404, headers });
     }
     return env.ASSETS.fetch(request);
