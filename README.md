@@ -2,10 +2,10 @@
 
 木头铅笔 / Wood Pencil Studio。美术：木头；程序：铅笔。
 
-本地工程位于 `D:/JWorkspacePrivate/3kranse`。默认日文，提供中文和英文；韩文入口为404准备页。支持手机与桌面浏览。
+本地工程位于 `D:/JWorkspacePrivate/3kranse`。中文优先，提供日文和英文；根入口自动识别浏览器语言，并记住手动选择；韩文入口为404准备页。支持手机与桌面浏览。
 
-- 日文：<http://localhost:4173/ja/>
 - 中文：<http://localhost:4173/zh-cn/>
+- 日文：<http://localhost:4173/ja/>
 - 英文：<http://localhost:4173/en/>
 
 已包括首页、三语Markdown攻略、精选武将与装备图鉴、操作说明、开发日志与规划、开发者专栏和玩家留言入口。Steam商店页及QQ群暂留准备状态。

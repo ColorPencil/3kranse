@@ -1,214 +1,5 @@
 [
   {
-    "title": "出征前の編成",
-    "summary": "主将、兵種、陣形をひとつの部隊として見る。",
-    "order": 3,
-    "updated": "2026-10-27",
-    "editorialReview": true,
-    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
-    "category": "guides",
-    "lang": "ja",
-    "slug": "armies",
-    "html": "<h2 id=\"section-1\">主将から考える</h2>\n<p>まず主将の属性、固有の特長、現在の体力と装備を読む。誰を選ぶかによって、活かしたい部隊の性格も変わる。図鑑の基礎値だけでなく、ゲーム内の現在値を確認しよう。</p>\n<h2 id=\"section-2\">兵種と分隊を確認する</h2>\n<p>編成画面では兵種と分隊の構成を確認できる。使える兵種や編成の条件を画面で確認し、予定している戦い方と比べよう。見た目の兵数だけで決めず、画面の編成表示も読むことが大切。</p>\n<p><img src=\"/assets/screens/army.webp\" alt=\"開発中の編成画面\"></p>\n<h2 id=\"section-3\">陣形を読む</h2>\n<p>陣形の説明を開き、長所だけでなく配置や使い方も考えよう。何種類も一度に変えるより、同じ主将と部隊でひとつずつ試すと違いが見えやすい。</p>\n<h2 id=\"section-4\">戦う場所を想像する</h2>\n<p>平地、水域、林地、城壁では交戦の見え方が変わる。予定経路の地形を見てから編成を決める習慣をつけたい。古い録画内の字幕や数値は、現在のルールを保証するものではない。</p>\n<h2 id=\"section-5\">出征前の最終確認</h2>\n<p>主将の状態、装備条件、兵種、分隊、陣形、兵糧を順に確認する。準備ができたら <a href=\"/ja/guides/battle/\">地形と戦場</a> へ。</p>\n",
-    "toc": [
-      {
-        "id": "section-1",
-        "text": "主将から考える",
-        "level": 2
-      },
-      {
-        "id": "section-2",
-        "text": "兵種と分隊を確認する",
-        "level": 2
-      },
-      {
-        "id": "section-3",
-        "text": "陣形を読む",
-        "level": 2
-      },
-      {
-        "id": "section-4",
-        "text": "戦う場所を想像する",
-        "level": 2
-      },
-      {
-        "id": "section-5",
-        "text": "出征前の最終確認",
-        "level": 2
-      }
-    ]
-  },
-  {
-    "title": "地形と戦場の読み方",
-    "summary": "一歩動かす前に、周囲を見る。",
-    "order": 4,
-    "updated": "2026-10-27",
-    "editorialReview": true,
-    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
-    "category": "guides",
-    "lang": "ja",
-    "slug": "battle",
-    "html": "<h2 id=\"section-1\">移動範囲を確かめる</h2>\n<p>ターン制の戦場では、部隊の位置と移動可能な範囲が判断の出発点になる。敵だけでなく、味方の位置と次の行動も考えて進もう。</p>\n<p><img src=\"/assets/screens/battlefield.webp\" alt=\"水域と移動範囲を示す開発中の戦場\"></p>\n<h2 id=\"section-2\">地形に合わせて考える</h2>\n<p>水域、森林、山地や城防では、同じ部隊でも状況が変わる。進めるマス、使える行動、相手との位置関係をその都度確認しよう。見た目だけから命中率やダメージ倍率を推測しないこと。</p>\n<h2 id=\"section-3\">天候と計略を確認する</h2>\n<p>計略は対象、距離、消費、天候などの条件を持つ。行動前に現在の説明を読む習慣をつけよう。火攻系でも個別の条件があるため、ひとつの計略の制限をすべてに当てはめない。</p>\n<h2 id=\"section-4\">白兵戦へつながる判断</h2>\n<p>戦場の位置取りは、接近後の白兵戦にもつながる。主将と兵士の状態を別々に見て、交戦を続けるか判断しよう。効果によっては兵士だけが対象となり、主将には適用されない。</p>\n<p>この稿では隠れた計算式や未公開の計略一覧を扱わない。まずは画面に見える条件を読み、無理な前進を減らすところから始めよう。</p>\n",
-    "toc": [
-      {
-        "id": "section-1",
-        "text": "移動範囲を確かめる",
-        "level": 2
-      },
-      {
-        "id": "section-2",
-        "text": "地形に合わせて考える",
-        "level": 2
-      },
-      {
-        "id": "section-3",
-        "text": "天候と計略を確認する",
-        "level": 2
-      },
-      {
-        "id": "section-4",
-        "text": "白兵戦へつながる判断",
-        "level": 2
-      }
-    ]
-  },
-  {
-    "title": "城を治め、足元を固める",
-    "summary": "金・兵糧・人材を、ひとつの計画として考える。",
-    "order": 2,
-    "updated": "2026-10-27",
-    "editorialReview": true,
-    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
-    "category": "guides",
-    "lang": "ja",
-    "slug": "city",
-    "html": "<h2 id=\"section-1\">城の情報を読む</h2>\n<p>城は出征の拠点であり、人材と資源を整える場所。金、兵糧、農業、産業、人口、統治などの項目を確認しよう。ひとつの数字だけを伸ばす前に、今の勢力に何が足りないかを考える。</p>\n<h2 id=\"section-2\">人材の使い道を決める</h2>\n<p>武将の詳細には複数の属性と固有の特長がある。強い武将をすべて前線へ送る前に、城に残す役割も考えたい。担当する行動の説明を読み、実行前後の変化を確認して、得意な仕事を見つけよう。</p>\n<h2 id=\"section-3\">出征と内政をつなげる</h2>\n<p>戦う前に兵糧や兵力を確認する習慣をつけよう。部隊を送り出した後の城の状態も判断材料になる。隣接する城と周囲の勢力を眺め、遠い目標と今できる行動を分けて考えると迷いにくい。</p>\n<h2 id=\"section-4\">最初の確認リスト</h2>\n<ul>\n<li>城の資金と兵糧はどうなっているか。</li>\n<li>配下の武将にはどんな得意分野があるか。</li>\n<li>今すぐ戦う必要があるか、それとも準備を整えるか。</li>\n</ul>\n<p>この入門稿では、隠れた登場条件や収入の内部計算式は公開しない。各行動の最新の説明はゲーム画面で確認しよう。</p>\n",
-    "toc": [
-      {
-        "id": "section-1",
-        "text": "城の情報を読む",
-        "level": 2
-      },
-      {
-        "id": "section-2",
-        "text": "人材の使い道を決める",
-        "level": 2
-      },
-      {
-        "id": "section-3",
-        "text": "出征と内政をつなげる",
-        "level": 2
-      },
-      {
-        "id": "section-4",
-        "text": "最初の確認リスト",
-        "level": 2
-      }
-    ]
-  },
-  {
-    "title": "一騎討ちの前に",
-    "summary": "武勇に加え、今の体力と選択を読む。",
-    "order": 5,
-    "updated": "2026-10-27",
-    "editorialReview": true,
-    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
-    "category": "guides",
-    "lang": "ja",
-    "slug": "duel",
-    "html": "<h2 id=\"section-1\">まず状態を確認する</h2>\n<p>一騎討ちでは、両者の体力と画面に示される斗志・指令を確認する。武力の高低だけで勝敗を決めつけず、現在の状態と装備も判断に含めよう。</p>\n<p><img src=\"/assets/screens/duel.webp\" alt=\"雨中の一騎討ち・開発中の録画より\"></p>\n<h2 id=\"section-2\">指令の説明を読む</h2>\n<p>攻撃などの選択肢は、状況を見ながら使うもの。初めての指令では説明を読み、一手の後に何が変わったかを見る。「この指令なら必ず勝てる」という前提で選ばないこと。</p>\n<h2 id=\"section-3\">画面の数値を見直す</h2>\n<p>装備の能力は人物の表示に影響し、戦闘中にだけ働く効果は基礎属性と区別される。図鑑の数字をそのまま最終ダメージと考えないようにしよう。</p>\n<h2 id=\"section-4\">記録映像について</h2>\n<p>雨、雪、夜やさまざまな場所の一騎討ち映像は、開発中の中文テスト版から採録している。テスト用表示や旧数値を含むため、現在のルール確認にはゲーム内の説明を使ってほしい。</p>\n",
-    "toc": [
-      {
-        "id": "section-1",
-        "text": "まず状態を確認する",
-        "level": 2
-      },
-      {
-        "id": "section-2",
-        "text": "指令の説明を読む",
-        "level": 2
-      },
-      {
-        "id": "section-3",
-        "text": "画面の数値を見直す",
-        "level": 2
-      },
-      {
-        "id": "section-4",
-        "text": "記録映像について",
-        "level": 2
-      }
-    ]
-  },
-  {
-    "title": "装備と武将の成長",
-    "summary": "数字だけでなく、条件と役割を見比べる。",
-    "order": 6,
-    "updated": "2026-10-27",
-    "editorialReview": true,
-    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
-    "category": "guides",
-    "lang": "ja",
-    "slug": "equipment",
-    "html": "<h2 id=\"section-1\">装備の説明を開く</h2>\n<p>武将の装備欄とアイテムの説明で、名称、攻撃・防御、重量や条件を確認しよう。強そうな名前だけで選ばず、使う武将に合っているかを考える。</p>\n<h2 id=\"section-2\">重量と能力を見比べる</h2>\n<p>装備の重量は単なる見た目の情報ではない。現在の人物状態と装備条件をゲーム内で確認すること。サイトの図鑑では基本的な攻撃、防御、重量を抜粋し、取得条件や未公開の個別情報は掲載していない。</p>\n<h2 id=\"section-3\">固有の特長と天賦を分ける</h2>\n<p>人物詳細では固有の特長と成長に関わる天賦を別々に読む。専用の計略や戦法を覚える場合は、ゲーム内の天賦の説明と必要な段階を確認しよう。図鑑に名称があるだけで、最初から使えるとは限らない。</p>\n<h2 id=\"section-4\">図鑑の公開範囲</h2>\n<p>武将は基礎武力・知力・徳望のいずれかが90以上の人物を紹介する。装備は一部を選び、レベル5を超える品は名前だけを掲載する。入手場所、隠し条件、未公開効果はゲームで出会う楽しみとして残している。</p>\n<p><a href=\"/ja/data/equipment/\">選りすぐりの装備を見る</a></p>\n",
-    "toc": [
-      {
-        "id": "section-1",
-        "text": "装備の説明を開く",
-        "level": 2
-      },
-      {
-        "id": "section-2",
-        "text": "重量と能力を見比べる",
-        "level": 2
-      },
-      {
-        "id": "section-3",
-        "text": "固有の特長と天賦を分ける",
-        "level": 2
-      },
-      {
-        "id": "section-4",
-        "text": "図鑑の公開範囲",
-        "level": 2
-      }
-    ]
-  },
-  {
-    "title": "初めての君主へ",
-    "summary": "最初の一手は、国と人を知ることから。",
-    "order": 1,
-    "updated": "2026-10-27",
-    "editorialReview": true,
-    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
-    "category": "guides",
-    "lang": "ja",
-    "slug": "first-steps",
-    "html": "<h2 id=\"section-1\">まずは自分の勢力を知る</h2>\n<p>君主と勢力を選んだら、すぐに出征せず、城の情報と武将一覧を開いてみよう。金、兵糧、都市の状態、配下の人材を確認することが最初の準備になる。開始時の配置はシナリオによって異なる。</p>\n<h2 id=\"section-2\">武将の役割を見比べる</h2>\n<p>武力だけで人材を判断しないこと。知力、徳望、統率や固有の特長も確認し、内政と出征の役割を考えよう。公式サイトの図鑑は基礎値の抜粋であり、装備や戦闘中の効果を含む最終値ではない。</p>\n<h2 id=\"section-3\">小さな目標から始める</h2>\n<ol>\n<li>城の資金と兵糧を確認する。</li>\n<li>武将の詳細を開き、得意な役割と装備を読む。</li>\n<li>編成画面で兵種と陣形を確認する。</li>\n<li>戦場では移動範囲と地形を見てから命令する。</li>\n<li>結果を見て、次のターンの方針を決める。</li>\n</ol>\n<p>勝ち筋を一度で覚える必要はない。まずはひとつの城と一隊を理解するところから、自分の三国志を始めよう。</p>\n<h2 id=\"section-4\">次に読む</h2>\n<p><a href=\"/ja/guides/city/\">城の経営</a> と <a href=\"/ja/guides/armies/\">出征前の編成</a> が次の一歩。操作に迷ったら <a href=\"/ja/data/controls/\">操作案内</a> を開こう。</p>\n",
-    "toc": [
-      {
-        "id": "section-1",
-        "text": "まずは自分の勢力を知る",
-        "level": 2
-      },
-      {
-        "id": "section-2",
-        "text": "武将の役割を見比べる",
-        "level": 2
-      },
-      {
-        "id": "section-3",
-        "text": "小さな目標から始める",
-        "level": 2
-      },
-      {
-        "id": "section-4",
-        "text": "次に読む",
-        "level": 2
-      }
-    ]
-  },
-  {
     "title": "出征前的编成",
     "summary": "把主将、兵种与阵型作为一支部队来考虑。",
     "order": 3,
@@ -413,6 +204,215 @@
       {
         "id": "section-4",
         "text": "接着阅读",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "出征前の編成",
+    "summary": "主将、兵種、陣形をひとつの部隊として見る。",
+    "order": 3,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "ja",
+    "slug": "armies",
+    "html": "<h2 id=\"section-1\">主将から考える</h2>\n<p>まず主将の属性、固有の特長、現在の体力と装備を読む。誰を選ぶかによって、活かしたい部隊の性格も変わる。図鑑の基礎値だけでなく、ゲーム内の現在値を確認しよう。</p>\n<h2 id=\"section-2\">兵種と分隊を確認する</h2>\n<p>編成画面では兵種と分隊の構成を確認できる。使える兵種や編成の条件を画面で確認し、予定している戦い方と比べよう。見た目の兵数だけで決めず、画面の編成表示も読むことが大切。</p>\n<p><img src=\"/assets/screens/army.webp\" alt=\"開発中の編成画面\"></p>\n<h2 id=\"section-3\">陣形を読む</h2>\n<p>陣形の説明を開き、長所だけでなく配置や使い方も考えよう。何種類も一度に変えるより、同じ主将と部隊でひとつずつ試すと違いが見えやすい。</p>\n<h2 id=\"section-4\">戦う場所を想像する</h2>\n<p>平地、水域、林地、城壁では交戦の見え方が変わる。予定経路の地形を見てから編成を決める習慣をつけたい。古い録画内の字幕や数値は、現在のルールを保証するものではない。</p>\n<h2 id=\"section-5\">出征前の最終確認</h2>\n<p>主将の状態、装備条件、兵種、分隊、陣形、兵糧を順に確認する。準備ができたら <a href=\"/ja/guides/battle/\">地形と戦場</a> へ。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "主将から考える",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "兵種と分隊を確認する",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "陣形を読む",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "戦う場所を想像する",
+        "level": 2
+      },
+      {
+        "id": "section-5",
+        "text": "出征前の最終確認",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "地形と戦場の読み方",
+    "summary": "一歩動かす前に、周囲を見る。",
+    "order": 4,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "ja",
+    "slug": "battle",
+    "html": "<h2 id=\"section-1\">移動範囲を確かめる</h2>\n<p>ターン制の戦場では、部隊の位置と移動可能な範囲が判断の出発点になる。敵だけでなく、味方の位置と次の行動も考えて進もう。</p>\n<p><img src=\"/assets/screens/battlefield.webp\" alt=\"水域と移動範囲を示す開発中の戦場\"></p>\n<h2 id=\"section-2\">地形に合わせて考える</h2>\n<p>水域、森林、山地や城防では、同じ部隊でも状況が変わる。進めるマス、使える行動、相手との位置関係をその都度確認しよう。見た目だけから命中率やダメージ倍率を推測しないこと。</p>\n<h2 id=\"section-3\">天候と計略を確認する</h2>\n<p>計略は対象、距離、消費、天候などの条件を持つ。行動前に現在の説明を読む習慣をつけよう。火攻系でも個別の条件があるため、ひとつの計略の制限をすべてに当てはめない。</p>\n<h2 id=\"section-4\">白兵戦へつながる判断</h2>\n<p>戦場の位置取りは、接近後の白兵戦にもつながる。主将と兵士の状態を別々に見て、交戦を続けるか判断しよう。効果によっては兵士だけが対象となり、主将には適用されない。</p>\n<p>この稿では隠れた計算式や未公開の計略一覧を扱わない。まずは画面に見える条件を読み、無理な前進を減らすところから始めよう。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "移動範囲を確かめる",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "地形に合わせて考える",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "天候と計略を確認する",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "白兵戦へつながる判断",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "城を治め、足元を固める",
+    "summary": "金・兵糧・人材を、ひとつの計画として考える。",
+    "order": 2,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "ja",
+    "slug": "city",
+    "html": "<h2 id=\"section-1\">城の情報を読む</h2>\n<p>城は出征の拠点であり、人材と資源を整える場所。金、兵糧、農業、産業、人口、統治などの項目を確認しよう。ひとつの数字だけを伸ばす前に、今の勢力に何が足りないかを考える。</p>\n<h2 id=\"section-2\">人材の使い道を決める</h2>\n<p>武将の詳細には複数の属性と固有の特長がある。強い武将をすべて前線へ送る前に、城に残す役割も考えたい。担当する行動の説明を読み、実行前後の変化を確認して、得意な仕事を見つけよう。</p>\n<h2 id=\"section-3\">出征と内政をつなげる</h2>\n<p>戦う前に兵糧や兵力を確認する習慣をつけよう。部隊を送り出した後の城の状態も判断材料になる。隣接する城と周囲の勢力を眺め、遠い目標と今できる行動を分けて考えると迷いにくい。</p>\n<h2 id=\"section-4\">最初の確認リスト</h2>\n<ul>\n<li>城の資金と兵糧はどうなっているか。</li>\n<li>配下の武将にはどんな得意分野があるか。</li>\n<li>今すぐ戦う必要があるか、それとも準備を整えるか。</li>\n</ul>\n<p>この入門稿では、隠れた登場条件や収入の内部計算式は公開しない。各行動の最新の説明はゲーム画面で確認しよう。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "城の情報を読む",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "人材の使い道を決める",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "出征と内政をつなげる",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "最初の確認リスト",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "一騎討ちの前に",
+    "summary": "武勇に加え、今の体力と選択を読む。",
+    "order": 5,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "ja",
+    "slug": "duel",
+    "html": "<h2 id=\"section-1\">まず状態を確認する</h2>\n<p>一騎討ちでは、両者の体力と画面に示される斗志・指令を確認する。武力の高低だけで勝敗を決めつけず、現在の状態と装備も判断に含めよう。</p>\n<p><img src=\"/assets/screens/duel.webp\" alt=\"雨中の一騎討ち・開発中の録画より\"></p>\n<h2 id=\"section-2\">指令の説明を読む</h2>\n<p>攻撃などの選択肢は、状況を見ながら使うもの。初めての指令では説明を読み、一手の後に何が変わったかを見る。「この指令なら必ず勝てる」という前提で選ばないこと。</p>\n<h2 id=\"section-3\">画面の数値を見直す</h2>\n<p>装備の能力は人物の表示に影響し、戦闘中にだけ働く効果は基礎属性と区別される。図鑑の数字をそのまま最終ダメージと考えないようにしよう。</p>\n<h2 id=\"section-4\">記録映像について</h2>\n<p>雨、雪、夜やさまざまな場所の一騎討ち映像は、開発中の中文テスト版から採録している。テスト用表示や旧数値を含むため、現在のルール確認にはゲーム内の説明を使ってほしい。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "まず状態を確認する",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "指令の説明を読む",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "画面の数値を見直す",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "記録映像について",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "装備と武将の成長",
+    "summary": "数字だけでなく、条件と役割を見比べる。",
+    "order": 6,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "ja",
+    "slug": "equipment",
+    "html": "<h2 id=\"section-1\">装備の説明を開く</h2>\n<p>武将の装備欄とアイテムの説明で、名称、攻撃・防御、重量や条件を確認しよう。強そうな名前だけで選ばず、使う武将に合っているかを考える。</p>\n<h2 id=\"section-2\">重量と能力を見比べる</h2>\n<p>装備の重量は単なる見た目の情報ではない。現在の人物状態と装備条件をゲーム内で確認すること。サイトの図鑑では基本的な攻撃、防御、重量を抜粋し、取得条件や未公開の個別情報は掲載していない。</p>\n<h2 id=\"section-3\">固有の特長と天賦を分ける</h2>\n<p>人物詳細では固有の特長と成長に関わる天賦を別々に読む。専用の計略や戦法を覚える場合は、ゲーム内の天賦の説明と必要な段階を確認しよう。図鑑に名称があるだけで、最初から使えるとは限らない。</p>\n<h2 id=\"section-4\">図鑑の公開範囲</h2>\n<p>武将は基礎武力・知力・徳望のいずれかが90以上の人物を紹介する。装備は一部を選び、レベル5を超える品は名前だけを掲載する。入手場所、隠し条件、未公開効果はゲームで出会う楽しみとして残している。</p>\n<p><a href=\"/ja/data/equipment/\">選りすぐりの装備を見る</a></p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "装備の説明を開く",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "重量と能力を見比べる",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "固有の特長と天賦を分ける",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "図鑑の公開範囲",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "初めての君主へ",
+    "summary": "最初の一手は、国と人を知ることから。",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "data/Heroes.json; data/game_data.tres; scripts/pojo/City.gd; scripts/sub_windows/HeroDetailWindow.gd; scripts/float_windows/TooltipTrigger.gd; local promotional videos 001-004; current project rules (2026-10-27)",
+    "category": "guides",
+    "lang": "ja",
+    "slug": "first-steps",
+    "html": "<h2 id=\"section-1\">まずは自分の勢力を知る</h2>\n<p>君主と勢力を選んだら、すぐに出征せず、城の情報と武将一覧を開いてみよう。金、兵糧、都市の状態、配下の人材を確認することが最初の準備になる。開始時の配置はシナリオによって異なる。</p>\n<h2 id=\"section-2\">武将の役割を見比べる</h2>\n<p>武力だけで人材を判断しないこと。知力、徳望、統率や固有の特長も確認し、内政と出征の役割を考えよう。公式サイトの図鑑は基礎値の抜粋であり、装備や戦闘中の効果を含む最終値ではない。</p>\n<h2 id=\"section-3\">小さな目標から始める</h2>\n<ol>\n<li>城の資金と兵糧を確認する。</li>\n<li>武将の詳細を開き、得意な役割と装備を読む。</li>\n<li>編成画面で兵種と陣形を確認する。</li>\n<li>戦場では移動範囲と地形を見てから命令する。</li>\n<li>結果を見て、次のターンの方針を決める。</li>\n</ol>\n<p>勝ち筋を一度で覚える必要はない。まずはひとつの城と一隊を理解するところから、自分の三国志を始めよう。</p>\n<h2 id=\"section-4\">次に読む</h2>\n<p><a href=\"/ja/guides/city/\">城の経営</a> と <a href=\"/ja/guides/armies/\">出征前の編成</a> が次の一歩。操作に迷ったら <a href=\"/ja/data/controls/\">操作案内</a> を開こう。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "まずは自分の勢力を知る",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "武将の役割を見比べる",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "小さな目標から始める",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "次に読む",
         "level": 2
       }
     ]
@@ -627,40 +627,6 @@
     ]
   },
   {
-    "title": "操作案内",
-    "summary": "マウス・キーボード・ゲームパッドで遊ぶ。",
-    "order": 1,
-    "updated": "2026-10-27",
-    "editorialReview": true,
-    "sources": "project.godot input map; author platform and control confirmation (2026-10-27)",
-    "category": "manual",
-    "lang": "ja",
-    "slug": "controls",
-    "html": "<h2 id=\"section-1\">マウス</h2>\n<p>画面上の項目やボタンを選んで操作する。武将や装備の詳細は、その項目から開いて説明を確認しよう。画面ごとの案内を優先してほしい。</p>\n<h2 id=\"section-2\">キーボード</h2>\n<p>基本の方向操作には矢印キーとWASD、決定にはEnterまたはSpace、取り消しにはEscを使用する。画面固有の操作は、その画面の表示で確認する。</p>\n<h2 id=\"section-3\">ゲームパッド</h2>\n<p>方向パッドまたは左スティックで項目を選び、主決定ボタンで決定、主取消ボタンで戻る。ボタン表記は機種や設定によって異なるため、画面のガイドを確認しよう。</p>\n<h2 id=\"section-4\">対応プラットフォーム</h2>\n<p>PCはWindowsとmacOSに対応する計画。AndroidとiOSはPC版発売と同時ではなく、後続のモバイル対応として進める。NSは将来計画。発売日と動作環境は確定後に案内する。</p>\n<p>この表は現在の入力設定に基づく基本操作の校正稿。全画面の個別操作を網羅したものではない。</p>\n",
-    "toc": [
-      {
-        "id": "section-1",
-        "text": "マウス",
-        "level": 2
-      },
-      {
-        "id": "section-2",
-        "text": "キーボード",
-        "level": 2
-      },
-      {
-        "id": "section-3",
-        "text": "ゲームパッド",
-        "level": 2
-      },
-      {
-        "id": "section-4",
-        "text": "対応プラットフォーム",
-        "level": 2
-      }
-    ]
-  },
-  {
     "title": "操作说明",
     "summary": "支持鼠标、键盘与手柄。",
     "order": 1,
@@ -695,6 +661,40 @@
     ]
   },
   {
+    "title": "操作案内",
+    "summary": "マウス・キーボード・ゲームパッドで遊ぶ。",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "project.godot input map; author platform and control confirmation (2026-10-27)",
+    "category": "manual",
+    "lang": "ja",
+    "slug": "controls",
+    "html": "<h2 id=\"section-1\">マウス</h2>\n<p>画面上の項目やボタンを選んで操作する。武将や装備の詳細は、その項目から開いて説明を確認しよう。画面ごとの案内を優先してほしい。</p>\n<h2 id=\"section-2\">キーボード</h2>\n<p>基本の方向操作には矢印キーとWASD、決定にはEnterまたはSpace、取り消しにはEscを使用する。画面固有の操作は、その画面の表示で確認する。</p>\n<h2 id=\"section-3\">ゲームパッド</h2>\n<p>方向パッドまたは左スティックで項目を選び、主決定ボタンで決定、主取消ボタンで戻る。ボタン表記は機種や設定によって異なるため、画面のガイドを確認しよう。</p>\n<h2 id=\"section-4\">対応プラットフォーム</h2>\n<p>PCはWindowsとmacOSに対応する計画。AndroidとiOSはPC版発売と同時ではなく、後続のモバイル対応として進める。NSは将来計画。発売日と動作環境は確定後に案内する。</p>\n<p>この表は現在の入力設定に基づく基本操作の校正稿。全画面の個別操作を網羅したものではない。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "マウス",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "キーボード",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "ゲームパッド",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "対応プラットフォーム",
+        "level": 2
+      }
+    ]
+  },
+  {
     "title": "Controls",
     "summary": "Play with a mouse, keyboard or gamepad.",
     "order": 1,
@@ -724,40 +724,6 @@
       {
         "id": "section-4",
         "text": "Platform plans",
-        "level": 2
-      }
-    ]
-  },
-  {
-    "title": "十年の歩み、いまも続く開発",
-    "summary": "木頭鉛筆の二人と、作り直すたびに残った想い。",
-    "order": 1,
-    "updated": "2026-10-27",
-    "editorialReview": true,
-    "sources": "https://www.bilibili.com/opus/1257756369220534292 ; https://www.bilibili.com/opus/1262555088971366406 ; author studio attribution",
-    "category": "creators",
-    "lang": "ja",
-    "slug": "ten-years",
-    "html": "<h2 id=\"section-1\">木頭鉛筆について</h2>\n<p>木頭が美術、鉛筆がプログラムを担当する小さな制作チーム。英語表記はWood Pencil Studio。『三国：乱世蒼生』の開発を続けている。</p>\n<h2 id=\"section-2\">作り直しながら、ここまで</h2>\n<p>2026年10月11日の開発者投稿では、十年にわたる歩みが振り返られている。2014年の紹介記事の記憶、RPG MakerからUnity、そしてGodotへ移った道のり。公開まで一直線に進んだのではなく、作り直しや以前の版を手放す決断もあった。</p>\n<p>美術を担当する仲間との再出発を経て、いまの作品へ。長い時間そのものを飾るのではなく、城の経営、戦場、人物の一つひとつを、遊べる形へと積み重ねていく。</p>\n<h2 id=\"section-3\">これからの一歩</h2>\n<p>10月24日の投稿ではAndroidのテストビルドを紹介した。現在の方針はPC版を優先し、安定化と画面・操作の調整を進めてからモバイルへ展開すること。AndroidとiOSに対応し、NSは将来の計画としている。</p>\n<h2 id=\"section-4\">開発者の原文を読む</h2>\n<ul>\n<li><a href=\"https://www.bilibili.com/opus/1257756369220534292\">十年の開発を振り返る・2026年10月11日</a></li>\n<li><a href=\"https://www.bilibili.com/opus/1262555088971366406\">Androidテストビルドについて・2026年10月24日</a></li>\n</ul>\n<p>開発者の公開投稿をもとに、これまでの歩みをまとめました。新しい進展も、これから少しずつお届けします。</p>\n",
-    "toc": [
-      {
-        "id": "section-1",
-        "text": "木頭鉛筆について",
-        "level": 2
-      },
-      {
-        "id": "section-2",
-        "text": "作り直しながら、ここまで",
-        "level": 2
-      },
-      {
-        "id": "section-3",
-        "text": "これからの一歩",
-        "level": 2
-      },
-      {
-        "id": "section-4",
-        "text": "開発者の原文を読む",
         "level": 2
       }
     ]
@@ -807,6 +773,40 @@
     ]
   },
   {
+    "title": "十年の歩み、いまも続く開発",
+    "summary": "木頭鉛筆の二人と、作り直すたびに残った想い。",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "https://www.bilibili.com/opus/1257756369220534292 ; https://www.bilibili.com/opus/1262555088971366406 ; author studio attribution",
+    "category": "creators",
+    "lang": "ja",
+    "slug": "ten-years",
+    "html": "<h2 id=\"section-1\">木頭鉛筆について</h2>\n<p>木頭が美術、鉛筆がプログラムを担当する小さな制作チーム。英語表記はWood Pencil Studio。『三国：乱世蒼生』の開発を続けている。</p>\n<h2 id=\"section-2\">作り直しながら、ここまで</h2>\n<p>2026年10月11日の開発者投稿では、十年にわたる歩みが振り返られている。2014年の紹介記事の記憶、RPG MakerからUnity、そしてGodotへ移った道のり。公開まで一直線に進んだのではなく、作り直しや以前の版を手放す決断もあった。</p>\n<p>美術を担当する仲間との再出発を経て、いまの作品へ。長い時間そのものを飾るのではなく、城の経営、戦場、人物の一つひとつを、遊べる形へと積み重ねていく。</p>\n<h2 id=\"section-3\">これからの一歩</h2>\n<p>10月24日の投稿ではAndroidのテストビルドを紹介した。現在の方針はPC版を優先し、安定化と画面・操作の調整を進めてからモバイルへ展開すること。AndroidとiOSに対応し、NSは将来の計画としている。</p>\n<h2 id=\"section-4\">開発者の原文を読む</h2>\n<ul>\n<li><a href=\"https://www.bilibili.com/opus/1257756369220534292\">十年の開発を振り返る・2026年10月11日</a></li>\n<li><a href=\"https://www.bilibili.com/opus/1262555088971366406\">Androidテストビルドについて・2026年10月24日</a></li>\n</ul>\n<p>開発者の公開投稿をもとに、これまでの歩みをまとめました。新しい進展も、これから少しずつお届けします。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "木頭鉛筆について",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "作り直しながら、ここまで",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "これからの一歩",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "開発者の原文を読む",
+        "level": 2
+      }
+    ]
+  },
+  {
     "title": "Ten years, still moving forward",
     "summary": "Wood Pencil Studio and a project shaped by starting again.",
     "order": 1,
@@ -841,40 +841,6 @@
     ]
   },
   {
-    "title": "開発の現在地と、これから",
-    "summary": "PCを先に。その先のプラットフォームへ。",
-    "order": 1,
-    "updated": "2026-10-27",
-    "editorialReview": true,
-    "sources": "author platform and website scope confirmation (2026-10-27); public Android development post",
-    "category": "devlog",
-    "lang": "ja",
-    "slug": "roadmap",
-    "html": "<h2 id=\"section-1\">現在の重点</h2>\n<p>PC版の開発と安定化を優先している。WindowsとmacOSに対応し、マウス・キーボード・ゲームパッドで遊べる構成を進める。Steamのストアページは準備中で、公開後に公式サイトから案内する。</p>\n<h2 id=\"section-2\">モバイルはPCの後に</h2>\n<p>Androidのテストビルドを制作済み。AndroidとiOSの双方に対応する方針だが、PC版との同時発売には含めない。画面と操作のモバイル向け調整を進めてから公開する。</p>\n<h2 id=\"section-3\">将来の計画</h2>\n<p>NSへの展開は将来計画。発売時期、認証状況、配信先の決定を示す発表ではない。日程や動作環境は、確定した情報から順に掲載していく。</p>\n<h2 id=\"section-4\">公式サイトについて</h2>\n<p>日本語・中国語・英語の情報を用意している。攻略記事は校正中の入門稿で、数値や操作の変更に合わせて更新する。韓国語版はまだ準備中。</p>\n<p>最新の開発発信は <a href=\"https://space.bilibili.com/288185013\">Bilibili</a> と <a href=\"https://x.com/woodpencil922\">X</a> で読める。</p>\n",
-    "toc": [
-      {
-        "id": "section-1",
-        "text": "現在の重点",
-        "level": 2
-      },
-      {
-        "id": "section-2",
-        "text": "モバイルはPCの後に",
-        "level": 2
-      },
-      {
-        "id": "section-3",
-        "text": "将来の計画",
-        "level": 2
-      },
-      {
-        "id": "section-4",
-        "text": "公式サイトについて",
-        "level": 2
-      }
-    ]
-  },
-  {
     "title": "开发进展与后续规划",
     "summary": "先把PC版本做好，再走向更多平台。",
     "order": 1,
@@ -904,6 +870,40 @@
       {
         "id": "section-4",
         "text": "官网内容建设",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "開発の現在地と、これから",
+    "summary": "PCを先に。その先のプラットフォームへ。",
+    "order": 1,
+    "updated": "2026-10-27",
+    "editorialReview": true,
+    "sources": "author platform and website scope confirmation (2026-10-27); public Android development post",
+    "category": "devlog",
+    "lang": "ja",
+    "slug": "roadmap",
+    "html": "<h2 id=\"section-1\">現在の重点</h2>\n<p>PC版の開発と安定化を優先している。WindowsとmacOSに対応し、マウス・キーボード・ゲームパッドで遊べる構成を進める。Steamのストアページは準備中で、公開後に公式サイトから案内する。</p>\n<h2 id=\"section-2\">モバイルはPCの後に</h2>\n<p>Androidのテストビルドを制作済み。AndroidとiOSの双方に対応する方針だが、PC版との同時発売には含めない。画面と操作のモバイル向け調整を進めてから公開する。</p>\n<h2 id=\"section-3\">将来の計画</h2>\n<p>NSへの展開は将来計画。発売時期、認証状況、配信先の決定を示す発表ではない。日程や動作環境は、確定した情報から順に掲載していく。</p>\n<h2 id=\"section-4\">公式サイトについて</h2>\n<p>日本語・中国語・英語の情報を用意している。攻略記事は校正中の入門稿で、数値や操作の変更に合わせて更新する。韓国語版はまだ準備中。</p>\n<p>最新の開発発信は <a href=\"https://space.bilibili.com/288185013\">Bilibili</a> と <a href=\"https://x.com/woodpencil922\">X</a> で読める。</p>\n",
+    "toc": [
+      {
+        "id": "section-1",
+        "text": "現在の重点",
+        "level": 2
+      },
+      {
+        "id": "section-2",
+        "text": "モバイルはPCの後に",
+        "level": 2
+      },
+      {
+        "id": "section-3",
+        "text": "将来の計画",
+        "level": 2
+      },
+      {
+        "id": "section-4",
+        "text": "公式サイトについて",
         "level": 2
       }
     ]

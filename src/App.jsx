@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ArrowUpRight, ArrowLeft, Desktop, DeviceMobile, GameController, List, X, MagnifyingGlass, Play, ChatCircle, EnvelopeSimple, CaretRight, SteamLogo } from '@phosphor-icons/react';
 import { copy, languages } from './i18n';
+import { defaultLanguage, languageOptions, rememberLanguage } from './locale.mjs';
 import catalogue from './generated/catalogue.json';
 import content from './generated/content.json';
 import Guestbook from './Guestbook';
@@ -9,7 +10,7 @@ import './styles.css';
 
 export function routeInfo(pathname) {
   const parts = pathname.split('?')[0].split('/').filter(Boolean);
-  const lang = languages.includes(parts[0]) ? parts[0] : 'ja';
+  const lang = languages.includes(parts[0]) ? parts[0] : defaultLanguage;
   const section = parts[1] || 'home';
   const slug = parts[2];
   const korean = parts[0] === 'ko';
@@ -41,7 +42,7 @@ function Header({ route, t }) {
     return () => document.removeEventListener('keydown', close);
   }, []);
   const path = language => language === 'ko' ? '/ko/' : `/${language}/${route.valid && route.section !== 'home' ? `${route.section}/${route.slug ? `${route.slug}/` : ''}${route.officer ? `${route.officer.id}/` : ''}` : ''}`;
-  return <header className="site-header"><a className="skip-link" href="#main">{t.skip}</a><div className="header-inner"><a href={`/${route.lang}/`} className="brand" aria-label={t.title}><span>{route.lang === 'en' ? '三国：乱世苍生' : t.title}</span>{route.lang === 'en' && <small>FATE OF THE PEOPLE</small>}</a><button ref={button} type="button" className="menu-toggle" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="primary-navigation" aria-label={open ? t.close : t.menu}>{open ? <X size={25} /> : <List size={25} />}</button><div className={`navigation ${open ? 'is-open' : ''}`} id="primary-navigation"><nav aria-label={t.menu}>{['home', 'guides', 'data', 'devlog', 'creators', 'guestbook'].map(key => <a key={key} className={route.section === key && route.valid ? 'active' : ''} aria-current={route.section === key && route.valid ? 'page' : undefined} href={`/${route.lang}/${key === 'home' ? '' : `${key}/`}`}>{t[key]}</a>)}</nav><nav className="languages" aria-label={t.language}>{[['ja', '日本語'], ['zh-cn', '中文'], ['en', 'EN'], ['ko', '한국어']].map(([lang, label]) => <a key={lang} href={path(lang)} lang={lang} hrefLang={lang} className={route.lang === lang && !route.korean ? 'selected' : ''} aria-current={route.lang === lang && !route.korean ? 'true' : undefined}>{label}</a>)}</nav></div></div></header>;
+  return <header className="site-header"><a className="skip-link" href="#main">{t.skip}</a><div className="header-inner"><a href={`/${route.lang}/`} className="brand" aria-label={t.title}><span>{route.lang === 'en' ? '三国：乱世苍生' : t.title}</span>{route.lang === 'en' && <small>FATE OF THE PEOPLE</small>}</a><button ref={button} type="button" className="menu-toggle" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="primary-navigation" aria-label={open ? t.close : t.menu}>{open ? <X size={25} /> : <List size={25} />}</button><div className={`navigation ${open ? 'is-open' : ''}`} id="primary-navigation"><nav aria-label={t.menu}>{['home', 'guides', 'data', 'devlog', 'creators', 'guestbook'].map(key => <a key={key} className={route.section === key && route.valid ? 'active' : ''} aria-current={route.section === key && route.valid ? 'page' : undefined} href={`/${route.lang}/${key === 'home' ? '' : `${key}/`}`}>{t[key]}</a>)}</nav><nav className="languages" aria-label={t.language}>{languageOptions.map(([lang, label]) => <a key={lang} href={path(lang)} onClick={() => rememberLanguage(lang)} lang={lang} hrefLang={lang} className={route.lang === lang && !route.korean ? 'selected' : ''} aria-current={route.lang === lang && !route.korean ? 'true' : undefined}>{label}</a>)}</nav></div></div></header>;
 }
 function Footer({ lang, t }) { return <footer className="site-footer"><div className="footer-lattice" aria-hidden="true" /><div className="footer-inner"><div><a className="footer-brand" href={`/${lang}/`}>{t.title}</a><p>{t.footerLine}</p><span className="small">© Wood Pencil Studio · 木头铅笔</span></div><div className="footer-links"><a href="https://space.bilibili.com/288185013" {...external}>Bilibili <ArrowUpRight /></a><a href="https://x.com/woodpencil922" {...external}>X <ArrowUpRight /></a><a href="mailto:fl345034301@gmail.com">{t.contact} <EnvelopeSimple /></a><a href={`/${lang}/privacy/`}>{t.privacyTitle}</a><span>{t.qq}</span></div></div></footer>; }
 function PlatformRow({ t }) { return <><div className="platform-row">{[[Desktop, t.pc, t.pcStatus], [DeviceMobile, t.mobile, t.mobileStatus], [GameController, t.ns, t.nsStatus]].map(([Icon, title, status]) => <div className="platform" key={title}><Icon size={27} weight="light" /><div><strong>{title}</strong><span>{status}</span></div></div>)}</div><p className="platform-note">{t.platformNote}</p></>; }

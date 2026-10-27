@@ -1,3 +1,4 @@
+import { languages } from '../src/locale.mjs';
 import { readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
@@ -6,7 +7,7 @@ import MarkdownIt from 'markdown-it';
 const root = process.cwd();
 const entries = [];
 for (const category of ['guides', 'manual', 'creators', 'devlog']) {
-  for (const lang of ['ja', 'zh-cn', 'en']) {
+  for (const lang of languages) {
     const dir = path.join(root, 'content', category, lang);
     for (const file of readdirSync(dir).filter(file => file.endsWith('.md'))) {
       const { data, content } = matter(readFileSync(path.join(dir, file), 'utf8'));

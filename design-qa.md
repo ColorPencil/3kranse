@@ -90,3 +90,12 @@ final result: passed
 - 新增wrangler.jsonc与build:workers，静态目录./dist/client，复用原边缘处理器。Wrangler 4.153.0 dry-run打包成功，ASSETS绑定有效；没有调用真实部署。
 - Pages构建和Workers构建均通过；19项既有回归通过。Workers本地运行时15项HTTP检查全部通过，记录docs/qa/workers-local-http-qa.json；312个文档与8204处站内链接／资源检查通过。
 - README现有冲突的两侧内容均保留，整理为官网维护说明和游戏介绍，移除冲突标记。没有提交或推送到远程。
+
+## 2026-10-27追加：中文优先与自动语言入口
+
+- 导航统一中文、日文、英文、韩文；根路径、无JS内容与通用404默认中文。日文／英文显式地址、分享的攻略和武将链接保持原语言。
+- 根入口按手动偏好、浏览器语言、中文默认的顺序选择；中文地区变体归一zh-cn。只记住手动选择，韩文入口不覆盖偏好；localStorage被禁用时仍可访问。自动跳转保留参数与锚点，replace避免返回键循环。
+- 根入口仅先加载约2.92kB的入口脚本，确定语言后再加载页面应用。首屏CSS仍置于静态head，保留原设计与无JS阅读。
+- 浏览器实际验证：日文、英文手动选择后回到根路径仍保持选择；参数与main锚点保留；英文偏好下可直达日文攻略；手机菜单切到同一篇中文攻略，武将切换到同一位英文武将；韩文准备页后根入口仍为中文。1440×900桌面与390×844手机正常，手机内容宽375，无横向溢出；error／warn为空。
+- Pages兼容构建、Workers最终构建和27项回归通过（含8项语言边界测试）；312个HTML的语言菜单、首屏样式及7580处内部资源检查通过。用作者给定SITE_URL构建，根canonical为https://www.3kranse.com/zh-cn/，303条站点地图地址有效。没有修改云端变量、推送或执行发布。
+- 证据在docs/qa/：language-home-desktop.jpg、language-order-desktop.jpg、language-order-mobile.jpg、language-browser-qa.json、language-static-qa.json。

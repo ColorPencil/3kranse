@@ -1,6 +1,5 @@
-import { createRoot, hydrateRoot } from 'react-dom/client';
-import App from './App';
-const root = document.getElementById('root');
-const app = <App initialPath={window.location.pathname} />;
-if (root.hasChildNodes()) hydrateRoot(root, app);
-else createRoot(root).render(app);
+import { redirectRootLanguage } from './locale.mjs';
+import './styles.css';
+
+// Select the entry language before downloading and hydrating the full page application.
+if (!redirectRootLanguage()) import('./mount.jsx');
