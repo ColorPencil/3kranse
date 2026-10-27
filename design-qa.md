@@ -74,3 +74,19 @@ final result: passed
 - 证据在docs/qa/：officer-dossier-zh-desktop-final.jpg、officer-dossier-zh-mobile.jpg、officer-dossier-en-mobile.jpg、officer-talents-en-mobile.jpg、officer-cards-zh-desktop.jpg、officer-cards-ja-mobile.jpg、officer-cards-en-320-mobile.jpg、equipment-cards-zh-desktop.jpg、equipment-zero-stats-zh-mobile.jpg。统计记录为codex-cards-static-qa.json、codex-cards-browser-qa.json。
 
 无未处理的本轮P0／P1／P2。继续保留83位精选规则和8级以上仅名称的公开边界；没有外网发布。
+
+## 2026-10-27追加：紧凑天赋、武将切换与元信息
+
+- [P2／已修复] 天赋描述框过高。1440×900桌面实测：节点框112.125／81.938px变为统一44px，四节点总高472.125px变为211px，减少55.3%；天赋面板639.469px变为358.344px。名称与描述同排，收起的习得内容入口位于右侧。日文同样为44px。
+- 390px中文手机与320px英文手机检查通过，内容宽分别为375、305，无横向溢出；长文字自然增高。中文9级预览四个节点可习得；展开首节点后框高98.891px，完整内容可读，没有固定高度裁切。
+- 顶部快捷切换实际点击曹操→孙坚→曹操→刘备，首位上一位禁用；英文末位下一位禁用，前一位路径为433而非459，确认沿公开图鉴顺序。三语249个详情的492条相邻链接全部验证。
+- 312个HTML均包含指定的8个关键词和4个图标引用。ICO与原作校验一致；PNG分别为32／128px，触屏图标180px。浏览器error／warn为空。
+- Pages构建成功；312个HTML和8204处内部链接／资源引用检查通过。当前发布目录498个文件，最大文件3323515字节。未执行真实Cloudflare发布。
+- 证据在docs/qa/：talents-compact-zh-desktop.jpg、talents-compact-zh-mobile.jpg、talents-compact-ja-desktop.jpg、talents-compact-en-320-mobile.jpg、officer-navigation-first-desktop.jpg、officer-navigation-last-en-mobile.jpg、officer-navigation-zh-desktop.jpg。统计与测量见talents-navigation-meta-static-qa.json、talents-navigation-browser-qa.json。
+
+## 2026-10-27追加：Workers部署与安装兼容
+
+- 已修复云端pnpm 9.10.0读取缺少packages的工作区文件时停止安装的问题；加入根包并固定pnpm 11.25.0、Node 24，在线冻结安装通过。
+- 新增wrangler.jsonc与build:workers，静态目录./dist/client，复用原边缘处理器。Wrangler 4.153.0 dry-run打包成功，ASSETS绑定有效；没有调用真实部署。
+- Pages构建和Workers构建均通过；19项既有回归通过。Workers本地运行时15项HTTP检查全部通过，记录docs/qa/workers-local-http-qa.json；312个文档与8204处站内链接／资源检查通过。
+- README现有冲突的两侧内容均保留，整理为官网维护说明和游戏介绍，移除冲突标记。没有提交或推送到远程。

@@ -22,3 +22,8 @@
 - 2026-10-27页脚边界追加：上边界下方铺28px暖棕木质镂空窗棂，素材为footer-wood-lattice-v01.webp；桌面／手机共用纹样，手机顶部留48px以免贴近文字。保留页尾水墨图层。
 
 - 2026-10-27图鉴追加：83位精选武将的基础属性白名单新增max_hp（基础最大体力，不能读场景当前hp）和cou（胆识），列表与详情均展示。精选资格与卡片主要能力仍只比较stre／inte／ste，不能因新字段改变筛选与突出项。装备的attack／defense／weight为0时不渲染，全部为0时不生成空属性栏；非零负值仍保留。
+
+- 2026-10-27天赋布局追加：收起状态下名称与描述同行，桌面基础节点框约44px；习得详情展开时自然增高，不裁剪长文本。武将详情顶部按83位公开图鉴顺序提供上一位／下一位，保留当前语言，首尾禁用相应方向，不按连续ID推算。
+- 页面搜索关键词保留三国、乱世苍生、霸王的大陆、三国志、策略游戏、SLG、霸王大陆、FC游戏；网页图标使用原始iconx32.ico及同套PNG。不要重新绘制或替换为工作室Logo。
+
+- 2026-10-27部署追加：当前用户使用Workers控制台，支持wrangler.jsonc与build:workers；输出固定dist/client，main复用cloudflare/pages-worker.mjs，ASSETS静态优先，留言与韩文入口run_worker_first。保留build:pages。工具链固定pnpm 11.25.0、Node 24、Wrangler 4.153.0；pnpm-workspace显式声明根包，不能恢复缺少packages的旧配置。

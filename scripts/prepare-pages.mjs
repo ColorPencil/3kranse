@@ -1,6 +1,7 @@
 import { build } from 'vite';
-import { copyFile, writeFile } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { prepareCloudflareAssets } from './prepare-cloudflare-assets.mjs';
 
 const output = path.resolve('dist/client');
 // Preserve the prerendered site; only bundle the portable server handler for Pages advanced mode.
@@ -19,15 +20,5 @@ await writeFile(path.join(output, '_routes.json'), JSON.stringify({
   include: ['/api/guestbook/*', '/ko', '/ko/*'],
   exclude: ['/assets/*'],
 }, null, 2) + '\n');
-for (const lang of ['ja', 'zh-cn', 'en']) {
-  // Pages chooses the nearest 404.html instead of turning unknown URLs into SPA successes.
-  await copyFile(path.join(output, lang, '404/index.html'), path.join(output, lang, '404.html'));
-}
-await writeFile(path.join(output, '_headers'), `/*
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; media-src 'self'; connect-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'
-/assets/*
-  Cache-Control: public, max-age=3600
-`);
+await prepareCloudflareAssets(output);
 console.log('Cloudflare Pages ready: dist/client (static site + guestbook Worker, no credentials embedded).');

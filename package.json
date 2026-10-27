@@ -12,19 +12,25 @@
     "test:sites": "node --test tests/sites-worker.test.mjs",
     "check": "node scripts/check-build.mjs",
     "build:pages": "pnpm run build && node scripts/prepare-pages.mjs",
-    "test:pages": "node --test tests/pages-worker.test.mjs"
+    "test:pages": "node --test tests/pages-worker.test.mjs",
+    "build:workers": "pnpm run build && node scripts/prepare-workers.mjs",
+    "deploy:workers": "wrangler deploy",
+    "preview:workers": "wrangler dev --local"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "@vitejs/plugin-react": "5.0.4",
-    "vite": "6.4.2",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^14.1.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "@phosphor-icons/react": "^2.1.10",
-    "gray-matter": "^4.0.3",
-    "markdown-it": "^14.1.0"
+    "vite": "6.4.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "wrangler": "4.153.0"
+  },
   "engines": {
     "node": ">=22"
-  }
+  },
+  "packageManager": "pnpm@11.25.0"
 }
